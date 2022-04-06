@@ -23,7 +23,7 @@
       outline: 1px red solid;
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      grid-template-areas: 'title . . sort addTask';
+      grid-template-areas: 'title . sort addProject addTask';
   }
 
   .sidebar{
@@ -65,5 +65,13 @@
       grid-area: addTask;
       display: flex;
       justify-content: flex-start;
+      align-items: flex-end;
+  }
+
+
+  .addProject{
+      grid-area: addProject;
+      display: flex;
+      justify-content: center;
       align-items: flex-end;
   }

@@ -1,0 +1,1 @@
+document.querySelector(".newProject").addEventListener("click",(function(){alert("test")}));
