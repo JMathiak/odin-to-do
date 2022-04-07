@@ -6,29 +6,26 @@ const renderToDos = () => {
 };
 
 const renderRow = (i) => {
-  let tableBody = document.querySelector("#todo-table-body");
-  let row = document.createElement("tr");
+  let div = document.querySelector(".content");
 
   //Data key?
 
-  tableBody.appendChild(row);
-
-  let title = document.createElement("td");
+  let title = document.createElement("div");
   title.innerHTML = ToDoList.masterList[i].taskName;
   console.log(ToDoList.masterList[i]);
-  row.appendChild(title);
+  div.appendChild(title);
 
-  let description = document.createElement("td");
+  let description = document.createElement("div");
   description.innerHTML = ToDoList.masterList[i].description;
-  row.appendChild(description);
+  div.appendChild(description);
 
-  let dueDate = document.createElement("td");
+  let dueDate = document.createElement("div");
   dueDate.innerHTML = ToDoList.masterList[i].dueDate;
-  row.appendChild(dueDate);
+  div.appendChild(dueDate);
 
-  let prio = document.createElement("td");
+  let prio = document.createElement("div");
   prio.innerHTML = ToDoList.masterList[i].priority;
-  row.appendChild(prio);
+  div.appendChild(prio);
 };
 
 export default renderToDos;

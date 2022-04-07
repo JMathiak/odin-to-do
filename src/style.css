@@ -93,5 +93,6 @@
     .content{
         display: grid;
         grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(5, min-content);
         width: 100%;
     }
