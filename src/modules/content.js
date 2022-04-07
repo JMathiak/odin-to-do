@@ -3,6 +3,17 @@ const renderToDos = () => {
   for (let i = 0; i < ToDoList.masterList.length; i++) {
     renderRow(i);
   }
+  let delBtns = document.getElementsByClassName("del-btn");
+  console.log(delBtns);
+  for (let i = 0; i < delBtns.length; i++) {
+    delBtns[i].onclick = function () {
+      let rowId = delBtns[i].id;
+      let filterArr = ToDoList.masterList.filter((task) => task.id != rowId);
+      ToDoList.masterList = filterArr;
+      console.log(ToDoList);
+      refreshContent();
+    };
+  }
 };
 
 const renderRow = (i) => {
@@ -13,29 +24,38 @@ const renderRow = (i) => {
 
   let title = document.createElement("div");
   title.innerHTML = ToDoList.masterList[i].taskName;
-  title.id = "task-" + dk;
+  title.id = dk;
   title.className = "task-content";
   contentDiv.appendChild(title);
 
   let description = document.createElement("div");
   description.innerHTML = ToDoList.masterList[i].description;
-  description.id = "task-" + dk;
+  description.id = dk;
   description.className = "task-content";
   contentDiv.appendChild(description);
 
   let dueDate = document.createElement("div");
   dueDate.innerHTML = ToDoList.masterList[i].dueDate;
-  dueDate.id = "task-" + dk;
+  dueDate.id = dk;
   dueDate.className = "task-content";
   contentDiv.appendChild(dueDate);
 
   let prio = document.createElement("div");
   prio.innerHTML = ToDoList.masterList[i].priority;
-  prio.id = "task-" + dk;
+  prio.id = dk;
   prio.className = "task-content";
   contentDiv.appendChild(prio);
 
   //Need to create buttons
+
+  let buttons = document.createElement("div");
+  let delBtn = document.createElement("button");
+  buttons.appendChild(delBtn);
+  delBtn.setAttribute("type", "button");
+  delBtn.id = dk;
+  delBtn.innerHTML = "Delete";
+  delBtn.className = "del-btn";
+  contentDiv.appendChild(buttons);
 };
 
 const removeRows = () => {
@@ -43,6 +63,11 @@ const removeRows = () => {
   console.log(contentDiv);
   contentDiv.forEach((taskElement) => {
     taskElement.remove();
+  });
+
+  let btns = document.querySelectorAll(".del-btn");
+  btns.forEach((btnElem) => {
+    btnElem.remove();
   });
 };
 
