@@ -27,7 +27,7 @@ renderToDos(ToDoList.masterList);
 initButtons();
 /*
 Notes:
--On add task form need a place to select which project to add the to do to. Allow for multiple project selection
+-On add task form need a place to select which project to add the to do to. Allow for multiple project selection (Maybe not)
 -Need an edit task button on each task row
 -Need to figure out where to create new projects
 -View all tasks needs to display project names
@@ -40,10 +40,12 @@ Plan of attack:
 --Need a discard change button 
 --Need a save change button 
 *Set up sorting 
+--Maybe add which way to be sorted? Strech goal?
 *Set up reverting sorting <-- Re render from master by checking isSorting for false
 -Set up projects
 -- Add project button
 -- Add project selection on add task form
 -- Add project views
+-- Re render table with a filtered array for the project they want to view. 
 
 */
