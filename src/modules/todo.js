@@ -1,5 +1,5 @@
 import { ToDoList } from "./list";
-import { refreshContent } from "./content";
+import { refreshContent, sortContent } from "./content";
 
 const ToDo = function (taskName, description, dueDate, priority) {
   this.taskName = taskName;
@@ -19,8 +19,24 @@ const addToDo = () => {
 
   let newTask = new ToDo(taskName, taskDesc, taskDate, taskPrio);
   ToDoList.masterList.push(newTask);
+  if (newTask.priority === "Low") {
+    ToDoList.lowPrio.push(newTask);
+  }
 
-  refreshContent();
+  if (newTask.priority === "Medium") {
+    ToDoList.medPrio.push(newTask);
+  }
+
+  if (newTask.priority === "High") {
+    ToDoList.highPrio.push(newTask);
+    console.log(ToDoList.highPrio);
+  }
+  console.log(ToDoList.isSorted);
+  if (ToDoList.isSorted === false) {
+    refreshContent();
+  } else {
+    sortContent();
+  }
 };
 
 export { ToDo, addToDo };

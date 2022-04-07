@@ -2,6 +2,15 @@ import { ToDo } from "./modules/todo";
 import { ToDoList } from "./modules/list";
 import { renderToDos } from "./modules/content";
 import initButtons from "./modules/buttons";
+
+console.log(ToDoList.masterList);
+let td2 = new ToDo(
+  "Roll for Yelan",
+  "Pull Yelan bc mommy",
+  "5/10/22",
+  "Medium"
+);
+ToDoList.masterList.push(td2);
 let td1 = new ToDo(
   "Roll for Ayaka",
   "Use all means necessary to pull Ayaka",
@@ -9,10 +18,12 @@ let td1 = new ToDo(
   "High"
 );
 ToDoList.masterList.push(td1);
-console.log(ToDoList.masterList);
-let td2 = new ToDo("Roll for Yelan", "Pull Yelan bc mommy", "5/10/22", "High");
-ToDoList.masterList.push(td2);
-renderToDos();
+let td3 = new ToDo("Roll for Ayato", " pull Ayato", "4/19/22", "Low");
+ToDoList.masterList.push(td3);
+ToDoList.lowPrio.push(td3);
+ToDoList.medPrio.push(td2);
+ToDoList.highPrio.push(td1);
+renderToDos(ToDoList.masterList);
 initButtons();
 /*
 Notes:

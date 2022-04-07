@@ -12,7 +12,7 @@
     <div id="container">
         <div class="header">
             <div class="title">Josh's To Do List</div>
-            <div class="sort"><button>Sort</button></div>
+            <div class="sort"><button id="sortTaskBtn">Sort</button></div>
             <div class="addProject"><button class="newProject">New Project</button></div>
             <div class="addTask"><button id="newTaskBtn">New Task</button></div>
         </div>
@@ -47,9 +47,9 @@
                     <label for="priorityInput">Task Priority</label>
                     <select size=1 id="priorityInput">
                         <option disabled selected value>-- Select Priority of The Task --</option>
-                        <option value="low">Low</option>
-                        <option value="medium">Medium</option>
-                        <option value="high">High</option>
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
                     </select>
                     <input id="submit-task-btn" type="button" value="Add Task">
                 </form>

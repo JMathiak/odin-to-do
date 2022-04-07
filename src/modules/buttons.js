@@ -1,5 +1,6 @@
 import { addToDo } from "./todo";
-
+import { sortContent } from "./content";
+import { ToDoList } from "./list";
 const initButtons = () => {
   let modal = document.getElementById("taskModal");
   let taskButton = document.getElementById("newTaskBtn");
@@ -23,6 +24,13 @@ const initButtons = () => {
     document.getElementById("descriptionInput").value = "";
     document.getElementById("dateInput").value = "";
     document.getElementById("priorityInput").selectedIndex = 0;
+  };
+
+  let sortButton = document.getElementById("sortTaskBtn");
+  sortButton.onclick = function () {
+    ToDoList.isSorted = !ToDoList.isSorted;
+    console.log(ToDoList.isSorted);
+    sortContent();
   };
 };
 

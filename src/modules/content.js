@@ -1,7 +1,7 @@
 import { ToDoList } from "./list";
-const renderToDos = () => {
-  for (let i = 0; i < ToDoList.masterList.length; i++) {
-    renderRow(i);
+const renderToDos = (array) => {
+  for (let i = 0; i < array.length; i++) {
+    renderRow(i, array);
   }
   const delBtns = document.getElementsByClassName("del-btn");
   console.log(delBtns);
@@ -11,28 +11,28 @@ const renderToDos = () => {
   }
 };
 
-const renderRow = (i) => {
+const renderRow = (i, array) => {
   let tableBody = document.querySelector("#task-table-body");
 
   //Data key? <-- Need to add the data key to each div.
-  let dk = ToDoList.masterList[i].id;
+  let dk = array[i].id;
   let row = document.createElement("tr");
   row.setAttribute("data-key", dk);
 
   let title = document.createElement("td");
-  title.innerHTML = ToDoList.masterList[i].taskName;
+  title.innerHTML = array[i].taskName;
   row.appendChild(title);
 
   let description = document.createElement("td");
-  description.innerHTML = ToDoList.masterList[i].description;
+  description.innerHTML = array[i].description;
   row.appendChild(description);
 
   let dueDate = document.createElement("td");
-  dueDate.innerHTML = ToDoList.masterList[i].dueDate;
+  dueDate.innerHTML = array[i].dueDate;
   row.appendChild(dueDate);
 
   let prio = document.createElement("td");
-  prio.innerHTML = ToDoList.masterList[i].priority;
+  prio.innerHTML = array[i].priority;
   row.appendChild(prio);
 
   //Need to create buttons
@@ -59,14 +59,27 @@ const removeTask = (e) => {
   let id = e.target.parentNode.parentNode.getAttribute("data-key");
   console.log("here", id);
   let filterArr = ToDoList.masterList.filter((task) => task.id != id);
+  let lowFilter = ToDoList.lowPrio.filter((task) => task.id != id);
+  ToDoList.lowPrio = lowFilter;
+  let medFilter = ToDoList.medPrio.filter((task) => task.id != id);
+  ToDoList.medPrio = medFilter;
+  let highFilter = ToDoList.highPrio.filter((task) => task.id != id);
+  ToDoList.highPrio = highFilter;
   ToDoList.masterList = filterArr;
   refreshContent();
 };
 
 const refreshContent = () => {
   removeRows();
-  renderToDos();
+  renderToDos(ToDoList.masterList);
 };
-export { renderToDos, refreshContent };
+
+const sortContent = () => {
+  removeRows();
+  renderToDos(ToDoList.highPrio);
+  renderToDos(ToDoList.medPrio);
+  renderToDos(ToDoList.lowPrio);
+};
+export { renderToDos, refreshContent, sortContent };
 
 //Use query selector to get array of divs that has the data attribute I want to remove
