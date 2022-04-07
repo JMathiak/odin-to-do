@@ -33,13 +33,17 @@ Notes:
 -View all tasks needs to display project names
 
 Plan of attack:
--Add a few dummy to do objects and get them rendering to the dom
--Set up the add task button 
+*Add a few dummy to do objects and get them rendering to the dom
+*Set up the add task button 
+-Set up task editing <-- Modal with the tasks data pre-filled into a form. 
+--Fetch task by using row ID which === task ID <-- Use filter
+--Need a discard change button 
+--Need a save change button 
+*Set up sorting 
+*Set up reverting sorting <-- Re render from master by checking isSorting for false
 -Set up projects
 -- Add project button
 -- Add project selection on add task form
 -- Add project views
-- Set up task editing
-- Set up sorting 
 
 */

@@ -75,10 +75,14 @@ const refreshContent = () => {
 };
 
 const sortContent = () => {
-  removeRows();
-  renderToDos(ToDoList.highPrio);
-  renderToDos(ToDoList.medPrio);
-  renderToDos(ToDoList.lowPrio);
+  if (ToDoList.isSorted === true) {
+    removeRows();
+    renderToDos(ToDoList.highPrio);
+    renderToDos(ToDoList.medPrio);
+    renderToDos(ToDoList.lowPrio);
+  } else if (ToDoList.isSorted === false) {
+    refreshContent();
+  }
 };
 export { renderToDos, refreshContent, sortContent };
 
