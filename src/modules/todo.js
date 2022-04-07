@@ -29,7 +29,6 @@ const addToDo = () => {
 
   if (newTask.priority === "High") {
     ToDoList.highPrio.push(newTask);
-    console.log(ToDoList.highPrio);
   }
   console.log(ToDoList.isSorted);
   if (ToDoList.isSorted === false) {
