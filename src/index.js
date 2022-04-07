@@ -1,6 +1,7 @@
 import { ToDo } from "./modules/todo";
 import { ToDoList } from "./modules/list";
-import renderToDos from "./modules/content";
+import { renderToDos } from "./modules/content";
+import initButtons from "./modules/buttons";
 let td1 = new ToDo(
   "Roll for Ayaka",
   "Use all means necessary to pull Ayaka",
@@ -12,19 +13,7 @@ console.log(ToDoList.masterList);
 let td2 = new ToDo("Roll for Yelan", "Pull Yelan bc mommy", "5/10/22", "High");
 ToDoList.masterList.push(td2);
 renderToDos();
-
-let modal = document.getElementById("taskModal");
-let taskButton = document.getElementById("newTaskBtn");
-
-taskButton.onclick = function () {
-  modal.style.display = "block";
-};
-
-window.onclick = function (event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-};
+initButtons();
 /*
 Notes:
 -On add task form need a place to select which project to add the to do to. Allow for multiple project selection

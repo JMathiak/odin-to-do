@@ -31,7 +31,22 @@
         </div>
         <div id="taskModal" class="modal">
             <div class="task-modal-content">
-                <<p>This is the modal for the add task form</p>>
+                <form>
+                    <label for="taskNameInput">Task Name</label>
+                    <input type="text" id="taskNameInput" required>
+                    <label for="descriptionInput">Task Description</label>
+                    <input type="text" id="descriptionInput">
+                    <label for="dateInput">Task Due Date</label>
+                    <input type="text" id="dateInput">
+                    <label for="priorityInput">Task Priority</label>
+                    <select size=1 id="priorityInput">
+                        <option disabled selected value>-- Select Priority of The Task --</option>
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                    <input id="submit-task-btn" type="button" value="Add Task">
+                </form>
             </div>
         </div>
     </div>
