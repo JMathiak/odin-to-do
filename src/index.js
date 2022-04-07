@@ -9,6 +9,8 @@ let td1 = new ToDo(
 );
 ToDoList.masterList.push(td1);
 console.log(ToDoList.masterList);
+let td2 = new ToDo("Roll for Yelan", "Pull Yelan bc mommy", "5/10/22", "High");
+ToDoList.masterList.push(td2);
 renderToDos();
 
 /*
