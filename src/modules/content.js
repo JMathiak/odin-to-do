@@ -34,6 +34,8 @@ const renderRow = (i) => {
   prio.id = "task-" + dk;
   prio.className = "task-content";
   contentDiv.appendChild(prio);
+
+  //Need to create buttons
 };
 
 const removeRows = () => {

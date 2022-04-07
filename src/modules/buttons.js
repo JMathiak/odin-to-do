@@ -15,7 +15,15 @@ const initButtons = () => {
   };
 
   let submitbutton = document.getElementById("submit-task-btn");
-  submitbutton.addEventListener("click", addToDo);
+  submitbutton.onclick = function () {
+    addToDo();
+    let modal = document.getElementById("taskModal");
+    modal.style.display = "none";
+    document.getElementById("taskNameInput").value = "";
+    document.getElementById("descriptionInput").value = "";
+    document.getElementById("dateInput").value = "";
+    document.getElementById("priorityInput").selectedIndex = 0;
+  };
 };
 
 export default initButtons;
