@@ -3,72 +3,64 @@ const renderToDos = () => {
   for (let i = 0; i < ToDoList.masterList.length; i++) {
     renderRow(i);
   }
-  let delBtns = document.getElementsByClassName("del-btn");
+  const delBtns = document.getElementsByClassName("del-btn");
   console.log(delBtns);
-  for (let i = 0; i < delBtns.length; i++) {
-    delBtns[i].onclick = function () {
-      let rowId = delBtns[i].id;
-      let filterArr = ToDoList.masterList.filter((task) => task.id != rowId);
-      ToDoList.masterList = filterArr;
-      console.log(ToDoList);
-      refreshContent();
-    };
+  for (let j = 0; j < delBtns.length; j++) {
+    console.log("here");
+    delBtns[j].addEventListener("click", removeTask);
   }
 };
 
 const renderRow = (i) => {
-  let contentDiv = document.querySelector(".content");
+  let tableBody = document.querySelector("#task-table-body");
 
   //Data key? <-- Need to add the data key to each div.
   let dk = ToDoList.masterList[i].id;
+  let row = document.createElement("tr");
+  row.setAttribute("data-key", dk);
 
-  let title = document.createElement("div");
+  let title = document.createElement("td");
   title.innerHTML = ToDoList.masterList[i].taskName;
-  title.id = dk;
-  title.className = "task-content";
-  contentDiv.appendChild(title);
+  row.appendChild(title);
 
-  let description = document.createElement("div");
+  let description = document.createElement("td");
   description.innerHTML = ToDoList.masterList[i].description;
-  description.id = dk;
-  description.className = "task-content";
-  contentDiv.appendChild(description);
+  row.appendChild(description);
 
-  let dueDate = document.createElement("div");
+  let dueDate = document.createElement("td");
   dueDate.innerHTML = ToDoList.masterList[i].dueDate;
-  dueDate.id = dk;
-  dueDate.className = "task-content";
-  contentDiv.appendChild(dueDate);
+  row.appendChild(dueDate);
 
-  let prio = document.createElement("div");
+  let prio = document.createElement("td");
   prio.innerHTML = ToDoList.masterList[i].priority;
-  prio.id = dk;
-  prio.className = "task-content";
-  contentDiv.appendChild(prio);
+  row.appendChild(prio);
 
   //Need to create buttons
 
-  let buttons = document.createElement("div");
+  let buttons = document.createElement("td");
   let delBtn = document.createElement("button");
   buttons.appendChild(delBtn);
   delBtn.setAttribute("type", "button");
-  delBtn.id = dk;
   delBtn.innerHTML = "Delete";
-  delBtn.className = "del-btn";
-  contentDiv.appendChild(buttons);
+  delBtn.classList.add("del-btn");
+  row.appendChild(buttons);
+
+  tableBody.appendChild(row);
 };
 
 const removeRows = () => {
-  let contentDiv = document.querySelectorAll(".task-content");
-  console.log(contentDiv);
-  contentDiv.forEach((taskElement) => {
-    taskElement.remove();
-  });
+  let contentDiv = document.querySelector("#task-table-body");
+  while (contentDiv.firstChild) {
+    contentDiv.removeChild(contentDiv.firstChild);
+  }
+};
 
-  let btns = document.querySelectorAll(".del-btn");
-  btns.forEach((btnElem) => {
-    btnElem.remove();
-  });
+const removeTask = (e) => {
+  let id = e.target.parentNode.parentNode.getAttribute("data-key");
+  console.log("here", id);
+  let filterArr = ToDoList.masterList.filter((task) => task.id != id);
+  ToDoList.masterList = filterArr;
+  refreshContent();
 };
 
 const refreshContent = () => {
