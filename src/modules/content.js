@@ -6,26 +6,29 @@ const renderToDos = () => {
 };
 
 const renderRow = (i) => {
-  let div = document.querySelector(".content");
+  let contentDiv = document.querySelector(".content");
 
-  //Data key?
+  //Data key? <-- Need to add the data key to each div.
+  let dk = ToDoList.masterList[i].id;
 
   let title = document.createElement("div");
   title.innerHTML = ToDoList.masterList[i].taskName;
   console.log(ToDoList.masterList[i]);
-  div.appendChild(title);
+  contentDiv.appendChild(title);
 
   let description = document.createElement("div");
   description.innerHTML = ToDoList.masterList[i].description;
-  div.appendChild(description);
+  contentDiv.appendChild(description);
 
   let dueDate = document.createElement("div");
   dueDate.innerHTML = ToDoList.masterList[i].dueDate;
-  div.appendChild(dueDate);
+  contentDiv.appendChild(dueDate);
 
   let prio = document.createElement("div");
   prio.innerHTML = ToDoList.masterList[i].priority;
-  div.appendChild(prio);
+  contentDiv.appendChild(prio);
 };
 
 export default renderToDos;
+
+//Use query selector to get array of divs that has the data attribute I want to remove
