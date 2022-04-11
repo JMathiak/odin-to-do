@@ -99,27 +99,6 @@ const sortContent = () => {
 };
 
 const renderProjects = () => {
-  console.log("Render Projs");
-  let projDiv = document.getElementById("projectInput");
-  let editProjDiv = document.getElementById("projectEdit");
-  for (let i = 0; i < ToDoList.projects.length; i++) {
-    let opt = document.createElement("option");
-    opt.value = ToDoList.projects[i];
-    opt.innerHTML = ToDoList.projects[i];
-    projDiv.appendChild(opt);
-  }
-  for (let j = 0; j < ToDoList.projects.length; j++) {
-    let opt = document.createElement("option");
-    opt.value = ToDoList.projects[j];
-    opt.innerHTML = ToDoList.projects[j];
-    editProjDiv.appendChild(opt);
-  }
-};
-
-const renderNewProjects = () => {
-  let projectInputOptions = document
-    .getElementById("projectInput")
-    .getElementsByTagName("option");
   let projectInputDiv = document.getElementById("projectInput");
   let editProjDiv = document.getElementById("projectEdit");
   while (projectInputDiv.childNodes.length > 2) {
