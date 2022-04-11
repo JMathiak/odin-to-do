@@ -51,8 +51,8 @@ Plan of attack:
 -- Re render table with a filtered array for the project they want to view. 
 
 
-View Modal:
---Dropdown with default, low to high priority, high to low, project (which just groups the tasks by projects)
---- To do the last one, iterate through projects array filtering the main array and rendering the resulting array 
+Sorting Modal:
+**Dropdown with default, low to high priority, high to low, project (which just groups the tasks by projects)
+*** To do the last one, iterate through projects array filtering the main array and rendering the resulting array 
 
 */
