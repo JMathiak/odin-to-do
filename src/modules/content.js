@@ -120,12 +120,6 @@ const renderProjects = () => {
     editProjDiv.appendChild(opt);
   }
 };
-export {
-  renderToDos,
-  refreshContent,
-  sortContent,
-  renderProjects,
-  renderNewProjects,
-};
+export { renderToDos, refreshContent, sortContent, renderProjects };
 
 //Use query selector to get array of divs that has the data attribute I want to remove
