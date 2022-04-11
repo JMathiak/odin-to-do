@@ -1,4 +1,5 @@
 import { ToDoList } from "./list";
+import { editTask } from "./todo";
 const renderToDos = (array) => {
   for (let i = 0; i < array.length; i++) {
     renderRow(i, array);
@@ -8,6 +9,11 @@ const renderToDos = (array) => {
   for (let j = 0; j < delBtns.length; j++) {
     console.log("here");
     delBtns[j].addEventListener("click", removeTask);
+  }
+
+  const editBtns = document.getElementsByClassName("edit-btn");
+  for (let k = 0; k < editBtns.length; k++) {
+    editBtns[k].addEventListener("click", editTask);
   }
 };
 
@@ -43,6 +49,11 @@ const renderRow = (i, array) => {
   delBtn.setAttribute("type", "button");
   delBtn.innerHTML = "Delete";
   delBtn.classList.add("del-btn");
+  let editBtn = document.createElement("button");
+  buttons.appendChild(editBtn);
+  editBtn.setAttribute("type", "button");
+  editBtn.innerHTML = "Edit";
+  editBtn.classList.add("edit-btn");
   row.appendChild(buttons);
 
   tableBody.appendChild(row);

@@ -38,7 +38,42 @@ const addToDo = () => {
   }
 };
 
-export { ToDo, addToDo };
+const editTask = (e) => {
+  let modal = document.getElementById("editModal");
+  modal.style.display = "block";
+
+  let id = e.target.parentNode.parentNode.getAttribute("data-key");
+  let index = 0;
+  for (let i = 0; i < ToDoList.masterList.length; i++) {
+    if (id === ToDoList.masterList[i].id) {
+      index = i;
+    }
+  }
+  document.getElementById("taskNameEdit").value =
+    ToDoList.masterList[index].taskName;
+  document.getElementById("descriptionEdit").value =
+    ToDoList.masterList[index].description;
+  document.getElementById("dateEdit").value =
+    ToDoList.masterList[index].dueDate;
+  document.getElementById("priorityEdit").value =
+    ToDoList.masterList[index].priority;
+
+  let saveChangesBtn = document.getElementById("submit-edit-btn");
+  saveChangesBtn.onclick = function () {
+    ToDoList.masterList[index].taskName =
+      document.getElementById("taskNameEdit").value;
+    ToDoList.masterList[index].description =
+      document.getElementById("descriptionEdit").value;
+    ToDoList.masterList[index].dueDate =
+      document.getElementById("dateEdit").value;
+    ToDoList.masterList[index].priority =
+      document.getElementById("priorityEdit").value;
+
+    modal.style.display = "none";
+  };
+};
+
+export { ToDo, addToDo, editTask };
 //How to handle projects?
 //Have an overacrching array that holds objects and subarrays for each project? <-- Seems likely
 // Have an overarching array and filter when necessary for projects

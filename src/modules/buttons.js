@@ -4,17 +4,20 @@ import { ToDoList } from "./list";
 const initButtons = () => {
   let modal = document.getElementById("taskModal");
   let taskButton = document.getElementById("newTaskBtn");
+  let editModal = document.getElementById("editModal");
 
   taskButton.onclick = function () {
     modal.style.display = "block";
   };
-
   window.onclick = function (event) {
     if (event.target == modal) {
+      console.log("close modal");
       modal.style.display = "none";
     }
+    if (event.target == editModal) {
+      editModal.style.display = "none";
+    }
   };
-
   let submitbutton = document.getElementById("submit-task-btn");
   submitbutton.onclick = function () {
     addToDo();

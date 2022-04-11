@@ -55,6 +55,27 @@
                 </form>
             </div>
         </div>
+        <div id="editModal" class="modal">
+            <div class="edit-modal-content">
+                <form>
+                    <label for="taskNameEdit">Task Name</label>
+                    <input type="text" id="taskNameEdit" required>
+                    <label for="descriptionEdit">Task Description</label>
+                    <input type="text" id="descriptionEdit">
+                    <label for="dateEdit">Task Due Date</label>
+                    <input type="text" id="dateEdit">
+                    <label for="priorityEdit">Task Priority</label>
+                    <select size=1 id="priorityEdit">
+                        <option disabled selected value>-- Select Priority of The Task --</option>
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                    </select>
+                    <input id="submit-edit-btn" type="button" value="Save Changes">
+                </form>
+            </div>
+        </div>
+
     </div>
     <script src="main.js"></script>
 </body>
