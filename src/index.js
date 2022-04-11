@@ -37,18 +37,17 @@ Notes:
 Plan of attack:
 *Add a few dummy to do objects and get them rendering to the dom
 *Set up the add task button 
--Set up task editing <-- Modal with the tasks data pre-filled into a form. 
---Fetch task by using row ID which === task ID <-- Use filter
+*Set up task editing <-- Modal with the tasks data pre-filled into a form. 
 --Need a discard change button 
---Need a save change button 
+**Need a save change button 
 *Set up sorting 
 --Maybe add which way to be sorted? Strech goal?
 *Set up reverting sorting <-- Re render from master by checking isSorting for false
 -Set up projects
--- Add project button
+** Add project button
 ** Add project selection on add task form
--- Edit Projects Modal. 
--- Add project views
+-- Edit Projects Modal. (?)
+-- Add project views <-- Can definitely do
 -- Re render table with a filtered array for the project they want to view. 
 
 */
