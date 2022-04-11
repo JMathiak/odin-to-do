@@ -7,7 +7,7 @@ const initButtons = () => {
   let editModal = document.getElementById("editModal");
   let projectModal = document.getElementById("projectModal");
   let addProj = document.getElementById("newProject");
-
+  let sortModal = document.getElementById("sortModal");
   addProj.onclick = function () {
     projectModal.style.display = "block";
   };
@@ -25,6 +25,9 @@ const initButtons = () => {
     if (event.target == projectModal) {
       projectModal.style.display = "none";
     }
+    if (event.target == sortModal) {
+      sortModal.style.display = "none";
+    }
   };
   let submitbutton = document.getElementById("submit-task-btn");
   submitbutton.onclick = function () {
@@ -39,9 +42,17 @@ const initButtons = () => {
 
   let sortButton = document.getElementById("sortTaskBtn");
   sortButton.onclick = function () {
-    ToDoList.isSorted = !ToDoList.isSorted;
-    console.log(ToDoList.isSorted);
-    sortContent();
+    let sortModal = document.getElementById("sortModal");
+    sortModal.style.display = "block";
+  };
+
+  let submitSortBtn = document.getElementById("submit-sort-btn");
+  submitSortBtn.onclick = function () {
+    let sortType = document.getElementById("sortType").value;
+    sortContent(sortType);
+    let sortModal = document.getElementById("sortModal");
+    sortModal.style.display = "none";
+    document.getElementById("sortType").selectedIndex = 0;
   };
 
   let addProjBtn = document.getElementById("submit-project-btn");

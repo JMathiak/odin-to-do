@@ -17,7 +17,7 @@ let td1 = new ToDo(
   "Use all means necessary to pull Ayaka",
   "4/19/22",
   "High",
-  "Pulls"
+  "Ascension"
 );
 ToDoList.masterList.push(td1);
 let td3 = new ToDo("Roll for Ayato", " pull Ayato", "4/19/22", "Low", "Pulls");
@@ -49,5 +49,10 @@ Plan of attack:
 -- Edit Projects Modal. (?)
 -- Add project views <-- Can definitely do
 -- Re render table with a filtered array for the project they want to view. 
+
+
+View Modal:
+--Dropdown with default, low to high priority, high to low, project (which just groups the tasks by projects)
+--- To do the last one, iterate through projects array filtering the main array and rendering the resulting array 
 
 */

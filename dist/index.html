@@ -93,6 +93,22 @@
                 </form>
             </div>
         </div>
+
+        <div id="sortModal" class="modal">
+            <div class="sort-modal-content">
+                <form>
+                    <label for="sortType">Select Sort Method</label>
+                    <select size="1" id="sortType">
+                        <option disabled selected value> -- Select Desired Sorting Method --</option>
+                        <option value="default">Order Tasks Were Added</option>
+                        <option value="lowToHigh">Lowest Priority to Highest Priority</option>
+                        <option value="highToLow">Highest Priority to Lowest Priorty</option>
+                        <option value="projectSorting">Group By Project</option>
+                        <input type="button" id="submit-sort-btn" value="Sort Tasks">
+                    </select>
+                </form>
+            </div>
+        </div>
     </div>
     <script src="main.js"></script>
 </body>

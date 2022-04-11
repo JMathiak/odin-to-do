@@ -1,5 +1,5 @@
 import { setPrioArrays, ToDoList } from "./list";
-import { editTask } from "./todo";
+import { editTask, ToDo } from "./todo";
 const renderToDos = (array) => {
   for (let i = 0; i < array.length; i++) {
     renderRow(i, array);
@@ -87,14 +87,34 @@ const refreshContent = () => {
   renderToDos(ToDoList.masterList);
 };
 
-const sortContent = () => {
-  if (ToDoList.isSorted === true) {
+const sortContent = (sortType) => {
+  if (sortType === "default") {
+    removeRows();
+    renderToDos(ToDoList.masterList);
+  }
+  if (sortType === "lowToHigh") {
+    removeRows();
+    renderToDos(ToDoList.lowPrio);
+    renderToDos(ToDoList.medPrio);
+    renderToDos(ToDoList.highPrio);
+  }
+
+  if (sortType === "highToLow") {
     removeRows();
     renderToDos(ToDoList.highPrio);
     renderToDos(ToDoList.medPrio);
     renderToDos(ToDoList.lowPrio);
-  } else if (ToDoList.isSorted === false) {
-    refreshContent();
+  }
+
+  if (sortType === "projectSorting") {
+    removeRows();
+    for (let i = 0; i < ToDoList.projects.length; i++) {
+      let projArr = ToDoList.masterList.filter(
+        (tasks) => tasks.project == ToDoList.projects[i]
+      );
+      console.log(projArr);
+      renderToDos(projArr);
+    }
   }
 };
 
