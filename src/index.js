@@ -1,5 +1,5 @@
 import { ToDo } from "./modules/todo";
-import { ToDoList } from "./modules/list";
+import { setPrioArrays, ToDoList } from "./modules/list";
 import { renderProjects, renderToDos } from "./modules/content";
 import initButtons from "./modules/buttons";
 
@@ -8,24 +8,25 @@ let td2 = new ToDo(
   "Roll for Yelan",
   "Pull Yelan bc mommy",
   "5/10/22",
-  "Medium"
+  "Medium",
+  "Pulls"
 );
 ToDoList.masterList.push(td2);
 let td1 = new ToDo(
   "Roll for Ayaka",
   "Use all means necessary to pull Ayaka",
   "4/19/22",
-  "High"
+  "High",
+  "Pulls"
 );
 ToDoList.masterList.push(td1);
-let td3 = new ToDo("Roll for Ayato", " pull Ayato", "4/19/22", "Low");
+let td3 = new ToDo("Roll for Ayato", " pull Ayato", "4/19/22", "Low", "Pulls");
 ToDoList.masterList.push(td3);
-ToDoList.lowPrio.push(td3);
-ToDoList.medPrio.push(td2);
-ToDoList.highPrio.push(td1);
+setPrioArrays();
 renderToDos(ToDoList.masterList);
 initButtons();
 renderProjects();
+
 /*
 Notes:
 -On add task form need a place to select which project to add the to do to. Allow for multiple project selection (Maybe not)

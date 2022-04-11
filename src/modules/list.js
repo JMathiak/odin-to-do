@@ -8,4 +8,15 @@ const ToDoList = (() => {
   return { masterList, lowPrio, medPrio, highPrio, isSorted, projects };
 })();
 
-export { ToDoList };
+const setPrioArrays = () => {
+  ToDoList.highPrio = ToDoList.masterList.filter(
+    (tasks) => tasks.priority === "High"
+  );
+  ToDoList.medPrio = ToDoList.masterList.filter(
+    (tasks) => tasks.priority === "Medium"
+  );
+  ToDoList.lowPrio = ToDoList.masterList.filter(
+    (tasks) => tasks.priority === "Low"
+  );
+};
+export { ToDoList, setPrioArrays };

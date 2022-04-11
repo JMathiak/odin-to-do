@@ -61,6 +61,8 @@ const editTask = (e) => {
     ToDoList.masterList[index].dueDate;
   document.getElementById("priorityEdit").value =
     ToDoList.masterList[index].priority;
+  document.getElementById("projectEdit").value =
+    ToDoList.masterList[index].project;
 
   let saveChangesBtn = document.getElementById("submit-edit-btn");
   saveChangesBtn.onclick = function () {
@@ -72,6 +74,8 @@ const editTask = (e) => {
       document.getElementById("dateEdit").value;
     ToDoList.masterList[index].priority =
       document.getElementById("priorityEdit").value;
+    ToDoList.masterList[index].project =
+      document.getElementById("projectEdit").value;
     ToDoList.highPrio = ToDoList.masterList.filter(
       (task) => task.priority === "High"
     );

@@ -28,6 +28,7 @@
                 <tr>
                     <th>Task Name</th>
                     <th>Description</th>
+                    <th>Project</th>
                     <th>Due Date</th>
                     <th>Priority</th>
                     <th></th>
@@ -74,6 +75,10 @@
                         <option value="Low">Low</option>
                         <option value="Medium">Medium</option>
                         <option value="High">High</option>
+                    </select>
+                    <label for="projectEdit">Task Project</label>
+                    <select size=1 id="projectEdit">
+                        <option disabled selected value> -- Select Project of Task -- </option>
                     </select>
                     <input id="submit-edit-btn" type="button" value="Save Changes">
                 </form>

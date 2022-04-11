@@ -1,4 +1,4 @@
-import { ToDoList } from "./list";
+import { setPrioArrays, ToDoList } from "./list";
 import { editTask } from "./todo";
 const renderToDos = (array) => {
   for (let i = 0; i < array.length; i++) {
@@ -32,6 +32,10 @@ const renderRow = (i, array) => {
   let description = document.createElement("td");
   description.innerHTML = array[i].description;
   row.appendChild(description);
+
+  let project = document.createElement("td");
+  project.innerHTML = array[i].project;
+  row.appendChild(project);
 
   let dueDate = document.createElement("td");
   dueDate.innerHTML = array[i].dueDate;
@@ -70,14 +74,12 @@ const removeTask = (e) => {
   let id = e.target.parentNode.parentNode.getAttribute("data-key");
   console.log("here", id);
   let filterArr = ToDoList.masterList.filter((task) => task.id != id);
-  let lowFilter = ToDoList.lowPrio.filter((task) => task.id != id);
-  ToDoList.lowPrio = lowFilter;
-  let medFilter = ToDoList.medPrio.filter((task) => task.id != id);
-  ToDoList.medPrio = medFilter;
-  let highFilter = ToDoList.highPrio.filter((task) => task.id != id);
-  ToDoList.highPrio = highFilter;
   ToDoList.masterList = filterArr;
+  setPrioArrays();
   refreshContent();
+  console.log(ToDoList.highPrio);
+  console.log(ToDoList.medPrio);
+  console.log(ToDoList.lowPrio);
 };
 
 const refreshContent = () => {
@@ -99,11 +101,13 @@ const sortContent = () => {
 const renderProjects = () => {
   console.log("Render Projs");
   let projDiv = document.getElementById("projectInput");
+  let editProjDiv = document.getElementById("projectEdit");
   for (let i = 0; i < ToDoList.projects.length; i++) {
     let opt = document.createElement("option");
     opt.value = ToDoList.projects[i];
     opt.innerHTML = ToDoList.projects[i];
     projDiv.appendChild(opt);
+    editProjDiv.appendChild(opt);
   }
 };
 export { renderToDos, refreshContent, sortContent, renderProjects };
