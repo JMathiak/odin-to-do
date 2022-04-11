@@ -95,6 +95,17 @@ const sortContent = () => {
     refreshContent();
   }
 };
-export { renderToDos, refreshContent, sortContent };
+
+const renderProjects = () => {
+  console.log("Render Projs");
+  let projDiv = document.getElementById("projectInput");
+  for (let i = 0; i < ToDoList.projects.length; i++) {
+    let opt = document.createElement("option");
+    opt.value = ToDoList.projects[i];
+    opt.innerHTML = ToDoList.projects[i];
+    projDiv.appendChild(opt);
+  }
+};
+export { renderToDos, refreshContent, sortContent, renderProjects };
 
 //Use query selector to get array of divs that has the data attribute I want to remove

@@ -4,7 +4,8 @@ const ToDoList = (() => {
   let lowPrio = [];
   let medPrio = [];
   let highPrio = [];
-  return { masterList, lowPrio, medPrio, highPrio, isSorted };
+  let projects = ["None", "Pulls", "Ascension"];
+  return { masterList, lowPrio, medPrio, highPrio, isSorted, projects };
 })();
 
 export { ToDoList };

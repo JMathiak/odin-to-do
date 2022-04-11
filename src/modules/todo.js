@@ -1,13 +1,13 @@
 import { ToDoList } from "./list";
 import { refreshContent, sortContent } from "./content";
 
-const ToDo = function (taskName, description, dueDate, priority) {
+const ToDo = function (taskName, description, dueDate, priority, project) {
   this.taskName = taskName;
   this.description = description;
   this.dueDate = dueDate;
   this.priority = priority;
   this.complete = false;
-  this.projects = ["default"];
+  this.project = project;
   this.id = Math.floor(Math.random() * 1000);
 };
 
@@ -17,7 +17,7 @@ const addToDo = () => {
   let taskDate = document.getElementById("dateInput").value;
   let taskPrio = document.getElementById("priorityInput").value;
 
-  let newTask = new ToDo(taskName, taskDesc, taskDate, taskPrio);
+  let newTask = new ToDo(taskName, taskDesc, taskDate, taskPrio, "default");
   ToDoList.masterList.push(newTask);
   if (newTask.priority === "Low") {
     ToDoList.lowPrio.push(newTask);
@@ -45,10 +45,14 @@ const editTask = (e) => {
   let id = e.target.parentNode.parentNode.getAttribute("data-key");
   let index = 0;
   for (let i = 0; i < ToDoList.masterList.length; i++) {
-    if (id === ToDoList.masterList[i].id) {
+    console.log("TDL ID", ToDoList.masterList[i].id);
+    if (id == ToDoList.masterList[i].id) {
       index = i;
     }
   }
+
+  console.log("id ", id);
+  console.log("index ", index);
   document.getElementById("taskNameEdit").value =
     ToDoList.masterList[index].taskName;
   document.getElementById("descriptionEdit").value =
@@ -68,7 +72,17 @@ const editTask = (e) => {
       document.getElementById("dateEdit").value;
     ToDoList.masterList[index].priority =
       document.getElementById("priorityEdit").value;
+    ToDoList.highPrio = ToDoList.masterList.filter(
+      (task) => task.priority === "High"
+    );
+    ToDoList.medPrio = ToDoList.masterList.filter(
+      (task) => task.priority === "Medium"
+    );
+    ToDoList.lowPrio = ToDoList.masterList.filter(
+      (task) => task.priority === "Low"
+    );
 
+    refreshContent();
     modal.style.display = "none";
   };
 };

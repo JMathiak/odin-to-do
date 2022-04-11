@@ -1,6 +1,6 @@
 import { ToDo } from "./modules/todo";
 import { ToDoList } from "./modules/list";
-import { renderToDos } from "./modules/content";
+import { renderProjects, renderToDos } from "./modules/content";
 import initButtons from "./modules/buttons";
 
 console.log(ToDoList.masterList);
@@ -25,6 +25,7 @@ ToDoList.medPrio.push(td2);
 ToDoList.highPrio.push(td1);
 renderToDos(ToDoList.masterList);
 initButtons();
+renderProjects();
 /*
 Notes:
 -On add task form need a place to select which project to add the to do to. Allow for multiple project selection (Maybe not)
