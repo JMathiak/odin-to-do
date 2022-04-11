@@ -19,4 +19,9 @@ const setPrioArrays = () => {
     (tasks) => tasks.priority === "Low"
   );
 };
-export { ToDoList, setPrioArrays };
+
+const addProject = () => {
+  let projInput = document.getElementById("projectName").value;
+  ToDoList.projects.push(projInput);
+};
+export { ToDoList, setPrioArrays, addProject };

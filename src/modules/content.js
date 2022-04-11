@@ -107,9 +107,46 @@ const renderProjects = () => {
     opt.value = ToDoList.projects[i];
     opt.innerHTML = ToDoList.projects[i];
     projDiv.appendChild(opt);
+  }
+  for (let j = 0; j < ToDoList.projects.length; j++) {
+    let opt = document.createElement("option");
+    opt.value = ToDoList.projects[j];
+    opt.innerHTML = ToDoList.projects[j];
     editProjDiv.appendChild(opt);
   }
 };
-export { renderToDos, refreshContent, sortContent, renderProjects };
+
+const renderNewProjects = () => {
+  let projectInputOptions = document
+    .getElementById("projectInput")
+    .getElementsByTagName("option");
+  let projectInputDiv = document.getElementById("projectInput");
+  let editProjDiv = document.getElementById("projectEdit");
+  while (projectInputDiv.childNodes.length > 2) {
+    projectInputDiv.removeChild(projectInputDiv.lastChild);
+  }
+  while (editProjDiv.childNodes.length > 2) {
+    editProjDiv.removeChild(editProjDiv.lastChild);
+  }
+  for (let i = 0; i < ToDoList.projects.length; i++) {
+    let opt = document.createElement("option");
+    opt.value = ToDoList.projects[i];
+    opt.innerHTML = ToDoList.projects[i];
+    projectInputDiv.appendChild(opt);
+  }
+  for (let j = 0; j < ToDoList.projects.length; j++) {
+    let opt = document.createElement("option");
+    opt.value = ToDoList.projects[j];
+    opt.innerHTML = ToDoList.projects[j];
+    editProjDiv.appendChild(opt);
+  }
+};
+export {
+  renderToDos,
+  refreshContent,
+  sortContent,
+  renderProjects,
+  renderNewProjects,
+};
 
 //Use query selector to get array of divs that has the data attribute I want to remove

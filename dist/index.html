@@ -13,7 +13,7 @@
         <div class="header">
             <div class="title">Josh's To Do List</div>
             <div class="sort"><button id="sortTaskBtn">Sort</button></div>
-            <div class="addProject"><button class="newProject">New Project</button></div>
+            <div class="addProject"><button id="newProject">New Project</button></div>
             <div class="addTask"><button id="newTaskBtn">New Task</button></div>
         </div>
         <div class="sidebar">
@@ -84,7 +84,15 @@
                 </form>
             </div>
         </div>
-
+        <div id="projectModal" class="modal">
+            <div class="project-modal-content">
+                <form >
+                    <label for="projectName">Project Name</label>
+                    <input type="text" id="projectName" required>
+                    <input id="submit-project-btn" type="button" value="Add New Project">
+                </form>
+            </div>
+        </div>
     </div>
     <script src="main.js"></script>
 </body>

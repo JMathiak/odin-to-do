@@ -46,7 +46,8 @@ Plan of attack:
 *Set up reverting sorting <-- Re render from master by checking isSorting for false
 -Set up projects
 -- Add project button
--- Add project selection on add task form
+** Add project selection on add task form
+-- Edit Projects Modal. 
 -- Add project views
 -- Re render table with a filtered array for the project they want to view. 
 

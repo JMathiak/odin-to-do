@@ -1,11 +1,16 @@
 import { addToDo } from "./todo";
-import { sortContent } from "./content";
-import { ToDoList } from "./list";
+import { renderNewProjects, renderProjects, sortContent } from "./content";
+import { addProject, ToDoList } from "./list";
 const initButtons = () => {
   let modal = document.getElementById("taskModal");
   let taskButton = document.getElementById("newTaskBtn");
   let editModal = document.getElementById("editModal");
+  let projectModal = document.getElementById("projectModal");
+  let addProj = document.getElementById("newProject");
 
+  addProj.onclick = function () {
+    projectModal.style.display = "block";
+  };
   taskButton.onclick = function () {
     modal.style.display = "block";
   };
@@ -16,6 +21,9 @@ const initButtons = () => {
     }
     if (event.target == editModal) {
       editModal.style.display = "none";
+    }
+    if (event.target == projectModal) {
+      projectModal.style.display = "none";
     }
   };
   let submitbutton = document.getElementById("submit-task-btn");
@@ -34,6 +42,14 @@ const initButtons = () => {
     ToDoList.isSorted = !ToDoList.isSorted;
     console.log(ToDoList.isSorted);
     sortContent();
+  };
+
+  let addProjBtn = document.getElementById("submit-project-btn");
+  addProjBtn.onclick = function () {
+    addProject();
+    projectModal.style.display = "none";
+    document.getElementById("projectName").value = "";
+    renderNewProjects();
   };
 };
 
