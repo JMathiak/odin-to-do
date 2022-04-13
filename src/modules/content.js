@@ -156,7 +156,7 @@ const sortContent = (sortType) => {
   }
 };
 
-const renderProjects = () => {
+const renderProjectsForTaskMenus = () => {
   let projectInputDiv = document.getElementById("projectInput");
   let editProjDiv = document.getElementById("projectEdit");
   while (projectInputDiv.childNodes.length > 2) {
@@ -182,7 +182,7 @@ export {
   renderToDos,
   refreshContent,
   sortContent,
-  renderProjects,
+  renderProjectsForTaskMenus,
   completeTask,
 };
 

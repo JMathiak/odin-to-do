@@ -1,6 +1,6 @@
 import { ToDo } from "./modules/todo";
 import { setPrioArrays, ToDoList } from "./modules/list";
-import { renderProjects, renderToDos } from "./modules/content";
+import { renderProjectsForTaskMenus, renderToDos } from "./modules/content";
 import initButtons from "./modules/buttons";
 
 console.log(ToDoList.masterList);
@@ -25,7 +25,7 @@ ToDoList.masterList.push(td3);
 setPrioArrays();
 renderToDos(ToDoList.masterList);
 initButtons();
-renderProjects();
+renderProjectsForTaskMenus();
 
 /*
 Notes:
@@ -60,5 +60,12 @@ Sorting Modal:
 --Projects collapsible on sidebar or a drop down? or a modal? or??? Something to view only tasks of a project. 
 **Button/Radio for marking a task complete that crosses out the row
 **Change buttons to icons of some sort. Pencil for edit, trashcan for delete
+
+-CSS for Modals
+-Change New task/projects to buttons for stylistic purposes. Shouldn't change functionality
+
+
+-Change table rendering to all occur in JS
+-Projects button in side bar renders table with project name + buttons for edit + delete
 
 */

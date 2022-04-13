@@ -1,5 +1,9 @@
 import { addToDo } from "./todo";
-import { renderNewProjects, renderProjects, sortContent } from "./content";
+import {
+  renderNewProjects,
+  renderProjectsForTaskMenus,
+  sortContent,
+} from "./content";
 import { addProject, ToDoList } from "./list";
 const initButtons = () => {
   let modal = document.getElementById("taskModal");
@@ -67,7 +71,7 @@ const initButtons = () => {
     addProject();
     projectModal.style.display = "none";
     document.getElementById("projectName").value = "";
-    renderNewProjects();
+    renderProjectsForTaskMenus();
   };
 };
 
