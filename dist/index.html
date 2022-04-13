@@ -12,7 +12,17 @@
     <div id="container">
         <div class="header">
             <div class="title">Josh's To Do List</div>
-            <div class="sort"><button id="sortTaskBtn">Sort</button></div>
+            <div class="sort">  
+                
+                <label for="sortType">Sort Tasks: </label>
+                <select size="1" id="sortType">
+                    <option value="default">Order Tasks Were Added</option>
+                    <option value="lowToHigh">Lowest Priority to Highest Priority</option>
+                    <option value="highToLow">Highest Priority to Lowest Priorty</option>
+                    <option value="projectSorting">Group By Project</option>
+                </select>
+            
+        </div>
             <div class="addProject"><button id="newProject">New Project</button></div>
             <div class="addTask"><button id="newTaskBtn">New Task</button></div>
         </div>

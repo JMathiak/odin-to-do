@@ -40,11 +40,11 @@ const initButtons = () => {
     document.getElementById("priorityInput").selectedIndex = 0;
   };
 
-  let sortButton = document.getElementById("sortTaskBtn");
-  sortButton.onclick = function () {
-    let sortModal = document.getElementById("sortModal");
-    sortModal.style.display = "block";
-  };
+  // let sortButton = document.getElementById("sortTaskBtn");
+  // sortButton.onclick = function () {
+  //   let sortModal = document.getElementById("sortModal");
+  //   sortModal.style.display = "block";
+  // };
 
   let submitSortBtn = document.getElementById("submit-sort-btn");
   submitSortBtn.onclick = function () {
@@ -53,6 +53,13 @@ const initButtons = () => {
     let sortModal = document.getElementById("sortModal");
     sortModal.style.display = "none";
     document.getElementById("sortType").selectedIndex = 0;
+  };
+
+  let sortSelect = document.getElementById("sortType");
+  sortSelect.onchange = function () {
+    console.log("here");
+    let sortType = sortSelect.value;
+    sortContent(sortType);
   };
 
   let addProjBtn = document.getElementById("submit-project-btn");
