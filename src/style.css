@@ -153,9 +153,17 @@
       {
         margin-right: 10px;
         margin-left: 10px;
-        padding: 5px;
+        padding: 15px;
       }
-
+      .del-btn, .edit-btn, .comp-btn ,
+      button{
+        background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+      }
 
       .sort,
       .addProject,
@@ -176,4 +184,9 @@
     #sortType{
       margin-left: 5px;
       border-radius: 5px;
+    }
+
+    .task-item.complete{
+      text-decoration: line-through;
+      color: rgba(220,220,220,0.4)
     }

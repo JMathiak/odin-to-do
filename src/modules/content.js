@@ -15,6 +15,13 @@ const renderToDos = (array) => {
   for (let k = 0; k < editBtns.length; k++) {
     editBtns[k].addEventListener("click", editTask);
   }
+
+  const completeBtns = document.getElementsByClassName("comp-btn");
+  for (let l = 0; l < completeBtns.length; l++) {
+    console.log(completeBtns[l].id);
+    let btnId = completeBtns[l].id;
+    completeBtns[l].addEventListener("click", completeTask);
+  }
 };
 
 const renderRow = (i, array) => {
@@ -24,7 +31,8 @@ const renderRow = (i, array) => {
   let dk = array[i].id;
   let row = document.createElement("tr");
   row.setAttribute("data-key", dk);
-
+  row.id = "task-" + dk;
+  row.classList.add("task-item");
   let title = document.createElement("td");
   title.innerHTML = array[i].taskName;
   row.appendChild(title);
@@ -48,12 +56,14 @@ const renderRow = (i, array) => {
   //Need to create buttons
 
   let buttons = document.createElement("td");
+  buttons.setAttribute("data-key", dk);
   let delBtn = document.createElement("button");
   let compBtn = document.createElement("button");
   buttons.appendChild(compBtn);
   compBtn.setAttribute("type", "button");
   compBtn.innerHTML = `<i class="fa-solid fa-check"></i>`;
   compBtn.classList.add("comp-btn");
+  compBtn.id = dk;
   buttons.appendChild(delBtn);
   delBtn.setAttribute("type", "button");
   delBtn.innerHTML = `<i class="fa-solid fa-trash"></i>`;
@@ -85,6 +95,27 @@ const removeTask = (e) => {
   console.log(ToDoList.highPrio);
   console.log(ToDoList.medPrio);
   console.log(ToDoList.lowPrio);
+};
+
+const completeTask = (e) => {
+  console.log("Complete Task");
+  let id = e.target.parentNode.parentNode.getAttribute("data-key");
+  console.log(id);
+  let rowId = "[data-key=" + `"` + id + `"]`;
+  let row = document.querySelector(rowId);
+  console.log(row);
+  for (let i = 0; i < ToDoList.masterList.length; i++) {
+    if (ToDoList.masterList[i].id == id) {
+      if (ToDoList.masterList[i].complete === false) {
+        row.classList.add("complete");
+        ToDoList.masterList[i].complete = true;
+      } else if (ToDoList.masterList[i].complete === true) {
+        row.classList.remove("complete");
+        ToDoList.masterList[i].complete = false;
+      }
+    }
+  }
+  console.log(row.classList);
 };
 
 const refreshContent = () => {
@@ -145,6 +176,12 @@ const renderProjects = () => {
     editProjDiv.appendChild(opt);
   }
 };
-export { renderToDos, refreshContent, sortContent, renderProjects };
+export {
+  renderToDos,
+  refreshContent,
+  sortContent,
+  renderProjects,
+  completeTask,
+};
 
 //Use query selector to get array of divs that has the data attribute I want to remove
