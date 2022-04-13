@@ -49,14 +49,19 @@ const renderRow = (i, array) => {
 
   let buttons = document.createElement("td");
   let delBtn = document.createElement("button");
+  let compBtn = document.createElement("button");
+  buttons.appendChild(compBtn);
+  compBtn.setAttribute("type", "button");
+  compBtn.innerHTML = `<i class="fa-solid fa-check"></i>`;
+  compBtn.classList.add("comp-btn");
   buttons.appendChild(delBtn);
   delBtn.setAttribute("type", "button");
-  delBtn.innerHTML = "Delete";
+  delBtn.innerHTML = `<i class="fa-solid fa-trash"></i>`;
   delBtn.classList.add("del-btn");
   let editBtn = document.createElement("button");
   buttons.appendChild(editBtn);
   editBtn.setAttribute("type", "button");
-  editBtn.innerHTML = "Edit";
+  editBtn.innerHTML = `<i class="fa-solid fa-pencil"></i>`;
   editBtn.classList.add("edit-btn");
   row.appendChild(buttons);
 

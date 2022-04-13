@@ -56,4 +56,9 @@ Sorting Modal:
 *** To do the last one, iterate through projects array filtering the main array and rendering the resulting array 
 
 **change sorting modal to a dropdown w/out modal + onchange rather than a submit
+
+--Projects collapsible on sidebar or a drop down? or a modal? or??? Something to view only tasks of a project. 
+--Button/Radio for marking a task complete that crosses out the row
+--Change buttons to icons of some sort. Pencil for edit, trashcan for delete
+
 */
