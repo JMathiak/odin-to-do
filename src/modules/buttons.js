@@ -1,11 +1,13 @@
 import { addToDo } from "./todo";
 import {
+  removeHeaders,
   renderNewProjects,
   renderProjectsForTaskMenus,
+  renderToDos,
   sortContent,
 } from "./content";
 import { addProject, ToDoList } from "./list";
-import { prepareDiv } from "./projectView";
+import { prepareDiv, removeProjectRows } from "./projectView";
 const initButtons = () => {
   let modal = document.getElementById("taskModal");
   let taskButton = document.getElementById("newTaskBtn");
@@ -78,6 +80,13 @@ const initButtons = () => {
   let projectViewBtn = document.getElementById("project-view");
   projectViewBtn.onclick = function () {
     prepareDiv();
+  };
+
+  let allTasksButton = document.getElementById("all-tasks");
+  allTasksButton.onclick = function () {
+    removeHeaders();
+    removeProjectRows();
+    renderToDos(ToDoList.masterList);
   };
 };
 

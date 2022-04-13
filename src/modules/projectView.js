@@ -86,4 +86,4 @@ const removeProject = (e) => {
   refreshProjects();
 };
 
-export { prepareDiv };
+export { prepareDiv, removeProjectRows };
