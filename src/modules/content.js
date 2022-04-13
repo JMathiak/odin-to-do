@@ -149,7 +149,9 @@ const sortContent = (sortType) => {
         (tasks) => tasks.project == ToDoList.projects[i]
       );
       console.log(projArr);
-      renderToDos(projArr);
+      renderToDos(projArr.filter((tasks) => tasks.priority === "High"));
+      renderToDos(projArr.filter((tasks) => tasks.priority === "Medium"));
+      renderToDos(projArr.filter((tasks) => tasks.priority === "Low"));
     }
   }
 };
