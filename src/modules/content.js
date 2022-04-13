@@ -194,12 +194,19 @@ const renderProjectsForTaskMenus = () => {
     editProjDiv.appendChild(opt);
   }
 };
+
+const removeHeaders = () => {
+  let header = document.getElementById("task-table");
+  header.removeChild(header.firstChild);
+};
 export {
   renderToDos,
   refreshContent,
   sortContent,
   renderProjectsForTaskMenus,
   completeTask,
+  removeRows,
+  removeHeaders,
 };
 
 //Use query selector to get array of divs that has the data attribute I want to remove

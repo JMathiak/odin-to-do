@@ -5,6 +5,7 @@ import {
   sortContent,
 } from "./content";
 import { addProject, ToDoList } from "./list";
+import { prepareDiv } from "./projectView";
 const initButtons = () => {
   let modal = document.getElementById("taskModal");
   let taskButton = document.getElementById("newTaskBtn");
@@ -72,6 +73,11 @@ const initButtons = () => {
     projectModal.style.display = "none";
     document.getElementById("projectName").value = "";
     renderProjectsForTaskMenus();
+  };
+
+  let projectViewBtn = document.getElementById("project-view");
+  projectViewBtn.onclick = function () {
+    prepareDiv();
   };
 };
 
