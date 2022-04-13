@@ -1,6 +1,22 @@
 import { setPrioArrays, ToDoList } from "./list";
 import { editTask, ToDo } from "./todo";
 const renderToDos = (array) => {
+  let headerArr = [
+    "Task Name",
+    "Description",
+    "Project",
+    "Due Date",
+    "Priority",
+    "",
+  ];
+  let taskHeader = document.getElementById("task-table");
+  let headerDiv = document.createElement("tr");
+  taskHeader.prepend(headerDiv);
+  for (let s = 0; s < headerArr.length; s++) {
+    let th = document.createElement("th");
+    th.innerHTML = headerArr[s];
+    headerDiv.appendChild(th);
+  }
   for (let i = 0; i < array.length; i++) {
     renderRow(i, array);
   }
