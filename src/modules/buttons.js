@@ -88,6 +88,20 @@ const initButtons = () => {
     removeProjectRows();
     renderToDos(ToDoList.masterList);
   };
+
+  let completedTaskBtn = document.getElementById("complete-tasks");
+  completedTaskBtn.onclick = function () {
+    removeHeaders();
+    removeProjectRows();
+    renderToDos(ToDoList.masterList.filter((task) => task.complete == true));
+  };
+
+  let incompleteTaskBtn = document.getElementById("incomplete-tasks");
+  incompleteTaskBtn.onclick = function () {
+    removeHeaders();
+    removeProjectRows();
+    renderToDos(ToDoList.masterList.filter((task) => task.complete == false));
+  };
 };
 
 export default initButtons;
