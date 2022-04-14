@@ -34,6 +34,11 @@ const renderProjects = () => {
   for (let k = 0; k < deleteButtons.length; k++) {
     deleteButtons[k].addEventListener("click", removeProject);
   }
+
+  const editButtons = document.getElementsByClassName("edit-btn");
+  for (let l = 0; l < editButtons.length; l++) {
+    editButtons[l].addEventListener("click", editProject);
+  }
 };
 
 const renderProjectRow = (i) => {
@@ -48,6 +53,7 @@ const renderProjectRow = (i) => {
   row.appendChild(projectName);
 
   let buttons = document.createElement("td");
+  buttons.id = i;
   buttons.setAttribute("data-key", i);
 
   let delBtn = document.createElement("button");
@@ -57,12 +63,13 @@ const renderProjectRow = (i) => {
   delBtn.classList.add("del-btn");
   delBtn.id = i;
 
-  // let editBtn = document.createElement("button");
-  // buttons.appendChild(editBtn);
-  // editBtn.setAttribute("type", "button");
-  // editBtn.innerHTML = `<i class="fa-solid fa-pencil"></i>`;
-  // editBtn.classList.add("edit-btn");
-  // editBtn.id = i;
+  let editBtn = document.createElement("button");
+  buttons.appendChild(editBtn);
+  editBtn.setAttribute("type", "button");
+  editBtn.innerHTML = `<i class="fa-solid fa-pencil"></i>`;
+  editBtn.classList.add("edit-btn");
+  editBtn.id = i;
+
   row.appendChild(buttons);
 
   tableBody.appendChild(row);
@@ -88,6 +95,30 @@ const removeProject = (e) => {
   let filteredArr = ToDoList.projects.filter((task) => task != target);
   ToDoList.projects = filteredArr;
   refreshProjects();
+};
+
+const editProject = (e) => {
+  let modal = document.getElementById("editProjectModal");
+  modal.style.display = "block";
+  console.log(modal);
+  let id = e.target.parentNode.id;
+  console.log(e.target.parentNode);
+  let oldProjectName = ToDoList.projects[id];
+
+  document.getElementById("editProjectName").value = oldProjectName;
+
+  let saveChangesBtn = document.getElementById("submit-project-edit-btn");
+  saveChangesBtn.onclick = function () {
+    ToDoList.projects[id] = document.getElementById("editProjectName").value;
+    let newProj = document.getElementById("editProjectName").value;
+    for (let m = 0; m < ToDoList.masterList.length; m++) {
+      if (ToDoList.masterList[m].project === oldProjectName) {
+        ToDoList.masterList[m].project = newProj;
+      }
+    }
+    modal.style.display = "none";
+    refreshProjects();
+  };
 };
 
 export { prepareDiv, removeProjectRows };
