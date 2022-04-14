@@ -22,8 +22,8 @@
   .header{
       grid-area: header;
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      grid-template-areas: 'title title addProject addTask sort';
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-areas: 'title title addProject addTask sort sort';
       border-bottom: 1px solid #d2defa;
       background-color: #d2defa;
      
@@ -227,4 +227,33 @@
 
     .sort{
       font-size: 18px;
+    }
+
+    form{
+      font-size: 20px;
+    }
+
+    input[type='button']
+    {
+      font-size: 16px;
+      padding: 5px;
+    }
+
+    input[type='text']
+    {
+      font-size: 20px;
+      padding: 2px;
+    }
+
+    input[type='select']
+    {
+      font-size: 20px;
+    }
+
+    option{
+      font-size: 16px;
+    }
+
+    select{
+      font-size: 16px;
     }
