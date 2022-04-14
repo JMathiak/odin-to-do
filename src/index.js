@@ -61,11 +61,11 @@ Sorting Modal:
 **Button/Radio for marking a task complete that crosses out the row
 **Change buttons to icons of some sort. Pencil for edit, trashcan for delete
 
--CSS for Modals
--Change New task/projects to buttons for stylistic purposes. Shouldn't change functionality
+*CSS for Modals
 
 
--Change table rendering to all occur in JS
+
+*Change table rendering to all occur in JS
 -Projects button in side bar renders table with project name + buttons for edit + delete
 
 */

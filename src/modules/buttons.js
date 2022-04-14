@@ -9,7 +9,7 @@ import {
 import { addProject, ToDoList } from "./list";
 import { prepareDiv, removeProjectRows } from "./projectView";
 const initButtons = () => {
-  let modal = document.getElementById("taskModal");
+  let taskModal = document.getElementById("taskModal");
   let taskButton = document.getElementById("newTaskBtn");
   let editModal = document.getElementById("editModal");
   let projectModal = document.getElementById("projectModal");
@@ -19,18 +19,23 @@ const initButtons = () => {
     projectModal.style.display = "block";
   };
   taskButton.onclick = function () {
-    modal.style.display = "block";
+    taskModal.style.display = "block";
   };
   window.onclick = function (event) {
-    if (event.target == modal) {
+    if (event.target == taskModal) {
       console.log("close modal");
-      modal.style.display = "none";
+      taskModal.style.display = "none";
+      document.getElementById("taskNameInput").value = "";
+      document.getElementById("descriptionInput").value = "";
+      document.getElementById("dateInput").value = "";
+      document.getElementById("priorityInput").selectedIndex = 0;
     }
     if (event.target == editModal) {
       editModal.style.display = "none";
     }
     if (event.target == projectModal) {
       projectModal.style.display = "none";
+      document.getElementById("projectName").value = "";
     }
     if (event.target == sortModal) {
       sortModal.style.display = "none";

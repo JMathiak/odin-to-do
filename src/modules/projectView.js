@@ -1,4 +1,8 @@
-import { removeHeaders, removeRows } from "./content";
+import {
+  removeHeaders,
+  removeRows,
+  renderProjectsForTaskMenus,
+} from "./content";
 import { ToDoList } from "./list";
 
 const prepareDiv = () => {
@@ -53,12 +57,12 @@ const renderProjectRow = (i) => {
   delBtn.classList.add("del-btn");
   delBtn.id = i;
 
-  let editBtn = document.createElement("button");
-  buttons.appendChild(editBtn);
-  editBtn.setAttribute("type", "button");
-  editBtn.innerHTML = `<i class="fa-solid fa-pencil"></i>`;
-  editBtn.classList.add("edit-btn");
-  editBtn.id = i;
+  // let editBtn = document.createElement("button");
+  // buttons.appendChild(editBtn);
+  // editBtn.setAttribute("type", "button");
+  // editBtn.innerHTML = `<i class="fa-solid fa-pencil"></i>`;
+  // editBtn.classList.add("edit-btn");
+  // editBtn.id = i;
   row.appendChild(buttons);
 
   tableBody.appendChild(row);
