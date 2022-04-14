@@ -124,12 +124,12 @@
         background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
       }
 
-      .task-modal-content {
+      .task-modal-content, .edit-modal-content {
         background-color: #fefefe;
         margin: auto;
-        padding: 20px;
+        padding: 40px;
         border: 1px solid #d2defa;
-        width: 80%;
+        width: 60%;
       }
     
       .task-modal-content > form,
@@ -138,29 +138,34 @@
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 1fr 1fr;
         align-content: center;
+        justify-items: start;
+        gap: 10px;
+      }
+
+      .project-modal-content > form{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
         justify-items: center;
       }
 
-      .edit-modal-content{
-        background-color: #fefefe;
-        margin: auto;
-        padding: 20px;
-        border: 1px solid #d2defa;
-        width: 80%;
+      .submit-proj{
+        justify-items: start;
       }
+
 
       .project-modal-content{
         background-color: #fefefe;
         margin: auto;
-        padding: 20px;
+        padding: 40px;
         border: 1px solid #d2defa;
-        width: 80%;
+        width: 50%;
       }
 
       .sort-modal-content{
         background-color: #fefefe;
         margin: auto;
-        padding: 20px;
+        padding: 40px;
         border: 1px solid #888;
         width: 80%;
       }
