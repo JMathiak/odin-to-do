@@ -46,6 +46,9 @@ const renderRow = (i, array) => {
   //Data key? <-- Need to add the data key to each div.
   let dk = array[i].id;
   let row = document.createElement("tr");
+  if (array[i].complete == true) {
+    row.classList.add("complete");
+  }
   row.setAttribute("data-key", dk);
   row.id = "task-" + dk;
   row.classList.add("task-item");

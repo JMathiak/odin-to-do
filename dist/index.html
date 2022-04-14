@@ -6,15 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../src/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDGothic&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/ac9ecc6d61.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <script src="main.js"></script>
     <div id="container">
         <div class="header">
-            <div class="title">Josh's To Do List</div>
+            <div class="title">To Do List</div>
             <div class="sort">  
-                
                 <label for="sortType">Sort Tasks: </label>
                 <select size="1" id="sortType">
                     <option value="default">Order Tasks Were Added</option>
@@ -42,36 +44,53 @@
         <div id="taskModal" class="modal">
             <div class="task-modal-content">
                 <form>
-                    <label for="taskNameInput">Task Name</label>
-                    <input type="text" id="taskNameInput" required>
-                    <label for="descriptionInput">Task Description</label>
-                    <input type="text" id="descriptionInput">
-                    <label for="dateInput">Task Due Date</label>
-                    <input type="text" id="dateInput">
-                    <label for="priorityInput">Task Priority</label>
-                    <select size=1 id="priorityInput">
-                        <option disabled selected value>-- Select Priority of The Task --</option>
-                        <option value="Low">Low</option>
-                        <option value="Medium">Medium</option>
-                        <option value="High">High</option>
-                    </select>
-                    <label for="projectInput">Task Project</label>
-                    <select size=1 id="projectInput">
-                        <option disabled selected value> -- Select Project of Task -- </option>
-                    </select>
-                    <input id="submit-task-btn" type="button" value="Add Task">
+                    <div>
+                        <label for="taskNameInput">Task Name</label>
+                        <input type="text" id="taskNameInput" required>
+                    </div>
+                    <div>
+                        <label for="descriptionInput">Task Description</label>
+                        <input type="text" id="descriptionInput">
+                    </div>
+                    <div>
+                        <label for="dateInput">Task Due Date</label>
+                        <input type="text" id="dateInput">
+                    </div>
+                    <div>
+                        <label for="priorityInput">Task Priority</label>
+                        <select size=1 id="priorityInput">
+                            <option disabled selected value>-- Select Priority of The Task --</option>
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="projectInput">Task Project</label>
+                        <select size=1 id="projectInput">
+                            <option disabled selected value> -- Select Project of Task -- </option>
+                        </select>
+                    </div>
+                    <div><input id="submit-task-btn" type="button" value="Add Task"></div>
                 </form>
             </div>
         </div>
         <div id="editModal" class="modal">
             <div class="edit-modal-content">
                 <form>
+                    <div>
                     <label for="taskNameEdit">Task Name</label>
                     <input type="text" id="taskNameEdit" required>
+                </div>
+                <div>
                     <label for="descriptionEdit">Task Description</label>
                     <input type="text" id="descriptionEdit">
+                </div>
+                <div>
                     <label for="dateEdit">Task Due Date</label>
                     <input type="text" id="dateEdit">
+                </div>
+                <div>
                     <label for="priorityEdit">Task Priority</label>
                     <select size=1 id="priorityEdit">
                         <option disabled selected value>-- Select Priority of The Task --</option>
@@ -79,11 +98,16 @@
                         <option value="Medium">Medium</option>
                         <option value="High">High</option>
                     </select>
+                </div>
+                <div>
                     <label for="projectEdit">Task Project</label>
                     <select size=1 id="projectEdit">
                         <option disabled selected value> -- Select Project of Task -- </option>
                     </select>
+                </div>
+                <div>
                     <input id="submit-edit-btn" type="button" value="Save Changes">
+                </div>
                 </form>
             </div>
         </div>
