@@ -32,10 +32,13 @@ const addToDo = () => {
     ToDoList.highPrio.push(newTask);
   }
   console.log(ToDoList.isSorted);
-  if (ToDoList.isSorted === false) {
-    refreshContent();
-  } else {
-    sortContent();
+  console.log(ToDoList.viewingProjects);
+  if (ToDoList.viewingProjects === false) {
+    if (ToDoList.isSorted === false) {
+      refreshContent();
+    } else {
+      sortContent();
+    }
   }
   let ind = ToDoList.masterList.indexOf(newTask);
   storeTask(ind, newTask);

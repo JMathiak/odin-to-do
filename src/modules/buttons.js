@@ -88,11 +88,13 @@ const initButtons = () => {
 
   let projectViewBtn = document.getElementById("project-view");
   projectViewBtn.onclick = function () {
+    ToDoList.viewingProjects = true;
     prepareDiv();
   };
 
   let allTasksButton = document.getElementById("all-tasks");
   allTasksButton.onclick = function () {
+    ToDoList.viewingProjects = false;
     removeHeaders();
     removeProjectRows();
     renderToDos(ToDoList.masterList);
@@ -100,6 +102,7 @@ const initButtons = () => {
 
   let completedTaskBtn = document.getElementById("complete-tasks");
   completedTaskBtn.onclick = function () {
+    ToDoList.viewingProjects = false;
     removeHeaders();
     removeProjectRows();
     renderToDos(ToDoList.masterList.filter((task) => task.complete == true));
@@ -107,6 +110,7 @@ const initButtons = () => {
 
   let incompleteTaskBtn = document.getElementById("incomplete-tasks");
   incompleteTaskBtn.onclick = function () {
+    ToDoList.viewingProjects = false;
     removeHeaders();
     removeProjectRows();
     renderToDos(ToDoList.masterList.filter((task) => task.complete == false));
