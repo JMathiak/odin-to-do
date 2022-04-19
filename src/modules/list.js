@@ -1,10 +1,12 @@
+import { logLocal, storeProjects } from "./storage";
+
 const ToDoList = (() => {
   let isSorted = false;
   let masterList = [];
   let lowPrio = [];
   let medPrio = [];
   let highPrio = [];
-  let projects = ["None", "Pulls", "Ascension"];
+  let projects = ["None"];
   return { masterList, lowPrio, medPrio, highPrio, isSorted, projects };
 })();
 
@@ -23,5 +25,8 @@ const setPrioArrays = () => {
 const addProject = () => {
   let projInput = document.getElementById("projectName").value;
   ToDoList.projects.push(projInput);
+  let ind = ToDoList.projects.indexOf(projInput);
+  storeProjects(ind, projInput);
+  logLocal();
 };
 export { ToDoList, setPrioArrays, addProject };

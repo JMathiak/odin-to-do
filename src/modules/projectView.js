@@ -95,6 +95,8 @@ const removeProject = (e) => {
   let filteredArr = ToDoList.projects.filter((task) => task != target);
   ToDoList.projects = filteredArr;
   refreshProjects();
+  let key = "project-" + id;
+  localStorage.removeItem(key);
 };
 
 const editProject = (e) => {
@@ -118,6 +120,9 @@ const editProject = (e) => {
     }
     modal.style.display = "none";
     refreshProjects();
+    let key = "project-" + id;
+    localStorage.removeItem(key);
+    localStorage.setItem(key, ToDoList.projects[id]);
   };
 };
 

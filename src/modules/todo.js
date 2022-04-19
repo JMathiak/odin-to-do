@@ -1,5 +1,6 @@
 import { ToDoList } from "./list";
 import { refreshContent, sortContent } from "./content";
+import { logLocal, storeTask } from "./storage";
 
 const ToDo = function (taskName, description, dueDate, priority, project) {
   this.taskName = taskName;
@@ -16,8 +17,8 @@ const addToDo = () => {
   let taskDesc = document.getElementById("descriptionInput").value;
   let taskDate = document.getElementById("dateInput").value;
   let taskPrio = document.getElementById("priorityInput").value;
-
-  let newTask = new ToDo(taskName, taskDesc, taskDate, taskPrio, "default");
+  let taskProj = document.getElementById("projectInput").value;
+  let newTask = new ToDo(taskName, taskDesc, taskDate, taskPrio, taskProj);
   ToDoList.masterList.push(newTask);
   if (newTask.priority === "Low") {
     ToDoList.lowPrio.push(newTask);
@@ -36,6 +37,9 @@ const addToDo = () => {
   } else {
     sortContent();
   }
+  let ind = ToDoList.masterList.indexOf(newTask);
+  storeTask(ind, newTask);
+  logLocal();
 };
 
 const editTask = (e) => {
@@ -88,6 +92,9 @@ const editTask = (e) => {
 
     refreshContent();
     modal.style.display = "none";
+    let key = "task-" + index;
+    localStorage.removeItem(key);
+    localStorage.setItem(key, JSON.stringify(ToDoList.masterList[index]));
   };
 };
 

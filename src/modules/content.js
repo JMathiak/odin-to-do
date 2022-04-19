@@ -111,9 +111,8 @@ const removeTask = (e) => {
   ToDoList.masterList = filterArr;
   setPrioArrays();
   refreshContent();
-  console.log(ToDoList.highPrio);
-  console.log(ToDoList.medPrio);
-  console.log(ToDoList.lowPrio);
+  let key = "task-" + id;
+  localStorage.removeItem(key);
 };
 
 const completeTask = (e) => {
@@ -139,10 +138,12 @@ const completeTask = (e) => {
 
 const refreshContent = () => {
   removeRows();
+  removeHeaders();
   renderToDos(ToDoList.masterList);
 };
 
 const sortContent = (sortType) => {
+  removeHeaders();
   if (sortType === "default") {
     removeRows();
     renderToDos(ToDoList.masterList);
