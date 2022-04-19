@@ -102,6 +102,3 @@ const editTask = (e) => {
 };
 
 export { ToDo, addToDo, editTask };
-//How to handle projects?
-//Have an overacrching array that holds objects and subarrays for each project? <-- Seems likely
-// Have an overarching array and filter when necessary for projects

@@ -17,13 +17,14 @@ const renderToDos = (array) => {
     th.innerHTML = headerArr[s];
     headerDiv.appendChild(th);
   }
+  //Iterates through the array passed to the function and calls the function that will render the object at the index of the array
   for (let i = 0; i < array.length; i++) {
     renderRow(i, array);
   }
+  //Iterates through the delete / edit / complete buttons in each row and links them to their respective row
+  // and gives them an on click function
   const delBtns = document.getElementsByClassName("del-btn");
-  console.log(delBtns);
   for (let j = 0; j < delBtns.length; j++) {
-    console.log("here");
     delBtns[j].addEventListener("click", removeTask);
   }
 
@@ -43,8 +44,8 @@ const renderToDos = (array) => {
 const renderRow = (i, array) => {
   let tableBody = document.querySelector("#task-table-body");
 
-  //Data key? <-- Need to add the data key to each div.
-  let dk = array[i].id;
+  let dk = array[i].id; //The data key used to access rows
+  //Creates the row tag and checks if the need to add styling for a completed task
   let row = document.createElement("tr");
   if (array[i].complete == true) {
     row.classList.add("complete");
@@ -52,6 +53,8 @@ const renderRow = (i, array) => {
   row.setAttribute("data-key", dk);
   row.id = "task-" + dk;
   row.classList.add("task-item");
+
+  //The following code sections creates the data cells for each part of the task to be displayed
   let title = document.createElement("td");
   title.innerHTML = array[i].taskName;
   row.appendChild(title);
@@ -65,6 +68,7 @@ const renderRow = (i, array) => {
   row.appendChild(project);
 
   let dueDate = document.createElement("td");
+  //I wanted to change the way the Date was rendered so I split the string to manipulate how its rendered
   let splitDate = array[i].dueDate.split("-");
   let formattedDate = splitDate[1] + "-" + splitDate[2] + "-" + splitDate[0];
   dueDate.innerHTML = formattedDate;
@@ -74,21 +78,28 @@ const renderRow = (i, array) => {
   prio.innerHTML = array[i].priority;
   row.appendChild(prio);
 
-  //Need to create buttons
+  //Following code section creates the buttons
 
+  //Creates the button cell
   let buttons = document.createElement("td");
   buttons.setAttribute("data-key", dk);
-  let delBtn = document.createElement("button");
+
+  //Creates the complete button
   let compBtn = document.createElement("button");
   buttons.appendChild(compBtn);
   compBtn.setAttribute("type", "button");
   compBtn.innerHTML = `<i class="fa-solid fa-check"></i>`;
   compBtn.classList.add("comp-btn");
   compBtn.id = dk;
+
+  //Creates the delete button
+  let delBtn = document.createElement("button");
   buttons.appendChild(delBtn);
   delBtn.setAttribute("type", "button");
   delBtn.innerHTML = `<i class="fa-solid fa-trash"></i>`;
   delBtn.classList.add("del-btn");
+
+  //Creates the edit button
   let editBtn = document.createElement("button");
   buttons.appendChild(editBtn);
   editBtn.setAttribute("type", "button");
@@ -99,6 +110,7 @@ const renderRow = (i, array) => {
   tableBody.appendChild(row);
 };
 
+//Function used to clear the table that is being currently displayed
 const removeRows = () => {
   let contentDiv = document.querySelector("#task-table-body");
   while (contentDiv.firstChild) {
@@ -106,21 +118,27 @@ const removeRows = () => {
   }
 };
 
+//On click function for delete task buttons
 const removeTask = (e) => {
+  //Gets the id by accessing the data key for the row
   let id = e.target.parentNode.parentNode.getAttribute("data-key");
-  console.log("here", id);
+
+  //Gets the index used with local storage
   let ind = ToDoList.masterList.indexOf(
     ToDoList.masterList.find((task) => task.id == id)
   );
+  let key = "task-" + ind;
+
+  //Filters the array, getting rid of the task that matches the ID of the row
   let filterArr = ToDoList.masterList.filter((task) => task.id != id);
   ToDoList.masterList = filterArr;
   setPrioArrays();
   refreshContent();
 
-  let key = "task-" + ind;
   localStorage.removeItem(key);
 };
 
+//Function used to toggle if a task is complete
 const completeTask = (e) => {
   console.log("Complete Task");
   let id = e.target.parentNode.parentNode.getAttribute("data-key");
@@ -128,6 +146,7 @@ const completeTask = (e) => {
   let rowId = "[data-key=" + `"` + id + `"]`;
   let row = document.querySelector(rowId);
   console.log(row);
+  //Iterates through all tasks and adds/removes styling used to indicate a task completion
   for (let i = 0; i < ToDoList.masterList.length; i++) {
     if (ToDoList.masterList[i].id == id) {
       if (ToDoList.masterList[i].complete === false) {
@@ -142,18 +161,22 @@ const completeTask = (e) => {
   console.log(row.classList);
 };
 
+//Refreshes the table to re-render the table. Used to update the table when changes are made.
 const refreshContent = () => {
   removeRows();
   removeHeaders();
   renderToDos(ToDoList.masterList);
 };
 
+//Renders the tasks in order of the selected sort type
 const sortContent = (sortType) => {
   removeHeaders();
   if (sortType === "default") {
     removeRows();
     renderToDos(ToDoList.masterList);
   }
+
+  //Sorting by priority is done by rendering sub-arrays in a certain order.
   if (sortType === "lowToHigh") {
     removeRows();
     renderToDos(ToDoList.lowPrio);
@@ -168,6 +191,8 @@ const sortContent = (sortType) => {
     renderToDos(ToDoList.lowPrio);
   }
 
+  //Iterates through the projects array and then the list of tasks only rendering the tasks with matching projects.
+  // All tasks will have been iterated by the time iteration is done
   if (sortType === "projectSorting") {
     removeRows();
     for (let i = 0; i < ToDoList.projects.length; i++) {
@@ -182,6 +207,7 @@ const sortContent = (sortType) => {
   }
 };
 
+//Updates select boxes when projects have been added/removed.
 const renderProjectsForTaskMenus = () => {
   let projectInputDiv = document.getElementById("projectInput");
   let editProjDiv = document.getElementById("projectEdit");
@@ -205,6 +231,7 @@ const renderProjectsForTaskMenus = () => {
   }
 };
 
+//Removes table headers. Used for switching between task views and viewing projects
 const removeHeaders = () => {
   let header = document.getElementById("task-table");
   header.removeChild(header.firstChild);

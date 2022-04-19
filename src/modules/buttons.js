@@ -9,6 +9,7 @@ import {
 import { addProject, ToDoList } from "./list";
 import { prepareDiv, removeProjectRows } from "./projectView";
 const initButtons = () => {
+  //Variable setting for all the different HTML components
   let taskModal = document.getElementById("taskModal");
   let taskButton = document.getElementById("newTaskBtn");
   let editModal = document.getElementById("editModal");
@@ -16,12 +17,23 @@ const initButtons = () => {
   let addProj = document.getElementById("newProject");
   let sortModal = document.getElementById("sortModal");
   let editProjModal = document.getElementById("editProjectModal");
+  let submitbutton = document.getElementById("submit-task-btn");
+  let sortSelect = document.getElementById("sortType");
+  let addProjBtn = document.getElementById("submit-project-btn");
+  let projectViewBtn = document.getElementById("project-view");
+  let allTasksButton = document.getElementById("all-tasks");
+  let completedTaskBtn = document.getElementById("complete-tasks");
+  let incompleteTaskBtn = document.getElementById("incomplete-tasks");
+
+  // Respective buttons will open their corresponding modals
   addProj.onclick = function () {
     projectModal.style.display = "block";
   };
   taskButton.onclick = function () {
     taskModal.style.display = "block";
   };
+
+  // Clicking outside of modals will close the modals
   window.onclick = function (event) {
     if (event.target == taskModal) {
       console.log("close modal");
@@ -45,7 +57,8 @@ const initButtons = () => {
       editProjModal.style.display = "none";
     }
   };
-  let submitbutton = document.getElementById("submit-task-btn");
+
+  //Functionality implementation for the button that handles adding a task
   submitbutton.onclick = function () {
     addToDo();
     let modal = document.getElementById("taskModal");
@@ -56,29 +69,14 @@ const initButtons = () => {
     document.getElementById("priorityInput").selectedIndex = 0;
   };
 
-  // let sortButton = document.getElementById("sortTaskBtn");
-  // sortButton.onclick = function () {
-  //   let sortModal = document.getElementById("sortModal");
-  //   sortModal.style.display = "block";
-  // };
-
-  // let submitSortBtn = document.getElementById("submit-sort-btn");
-  // submitSortBtn.onclick = function () {
-  //   let sortType = document.getElementById("sortType").value;
-  //   sortContent(sortType);
-  //   let sortModal = document.getElementById("sortModal");
-  //   sortModal.style.display = "none";
-  //   document.getElementById("sortType").selectedIndex = 0;
-  // };
-
-  let sortSelect = document.getElementById("sortType");
+  //Implementation of the on change function for the sorting select box
   sortSelect.onchange = function () {
     console.log("here");
     let sortType = sortSelect.value;
     sortContent(sortType);
   };
 
-  let addProjBtn = document.getElementById("submit-project-btn");
+  // On click function for adding a project
   addProjBtn.onclick = function () {
     addProject();
     projectModal.style.display = "none";
@@ -86,13 +84,12 @@ const initButtons = () => {
     renderProjectsForTaskMenus();
   };
 
-  let projectViewBtn = document.getElementById("project-view");
+  //Side bar on click functions for changing the views
   projectViewBtn.onclick = function () {
     ToDoList.viewingProjects = true;
     prepareDiv();
   };
 
-  let allTasksButton = document.getElementById("all-tasks");
   allTasksButton.onclick = function () {
     ToDoList.viewingProjects = false;
     removeHeaders();
@@ -100,7 +97,6 @@ const initButtons = () => {
     renderToDos(ToDoList.masterList);
   };
 
-  let completedTaskBtn = document.getElementById("complete-tasks");
   completedTaskBtn.onclick = function () {
     ToDoList.viewingProjects = false;
     removeHeaders();
@@ -108,7 +104,6 @@ const initButtons = () => {
     renderToDos(ToDoList.masterList.filter((task) => task.complete == true));
   };
 
-  let incompleteTaskBtn = document.getElementById("incomplete-tasks");
   incompleteTaskBtn.onclick = function () {
     ToDoList.viewingProjects = false;
     removeHeaders();
