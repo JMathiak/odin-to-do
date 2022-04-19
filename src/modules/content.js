@@ -65,7 +65,9 @@ const renderRow = (i, array) => {
   row.appendChild(project);
 
   let dueDate = document.createElement("td");
-  dueDate.innerHTML = array[i].dueDate;
+  let splitDate = array[i].dueDate.split("-");
+  let formattedDate = splitDate[1] + "-" + splitDate[2] + "-" + splitDate[0];
+  dueDate.innerHTML = formattedDate;
   row.appendChild(dueDate);
 
   let prio = document.createElement("td");
@@ -107,11 +109,15 @@ const removeRows = () => {
 const removeTask = (e) => {
   let id = e.target.parentNode.parentNode.getAttribute("data-key");
   console.log("here", id);
+  let ind = ToDoList.masterList.indexOf(
+    ToDoList.masterList.find((task) => task.id == id)
+  );
   let filterArr = ToDoList.masterList.filter((task) => task.id != id);
   ToDoList.masterList = filterArr;
   setPrioArrays();
   refreshContent();
-  let key = "task-" + id;
+
+  let key = "task-" + ind;
   localStorage.removeItem(key);
 };
 
