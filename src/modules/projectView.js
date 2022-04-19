@@ -26,7 +26,7 @@ const renderProjectHeaders = () => {
 const renderProjects = () => {
   let tableBody = document.getElementById("task-table-body");
 
-  for (let j = 0; j < ToDoList.projects.length; j++) {
+  for (let j = 1; j < ToDoList.projects.length; j++) {
     renderProjectRow(j);
   }
 
@@ -126,4 +126,4 @@ const editProject = (e) => {
   };
 };
 
-export { prepareDiv, removeProjectRows };
+export { prepareDiv, removeProjectRows, refreshProjects };

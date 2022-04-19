@@ -1,3 +1,5 @@
+import { renderProjectsForTaskMenus } from "./content";
+import { refreshProjects } from "./projectView";
 import { logLocal, storeProjects } from "./storage";
 
 const ToDoList = (() => {
@@ -28,5 +30,6 @@ const addProject = () => {
   let ind = ToDoList.projects.indexOf(projInput);
   storeProjects(ind, projInput);
   logLocal();
+  refreshProjects();
 };
 export { ToDoList, setPrioArrays, addProject };
