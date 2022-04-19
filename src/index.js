@@ -70,4 +70,6 @@ Sorting Modal:
 *Change table rendering to all occur in JS
 -Projects button in side bar renders table with project name + buttons for edit + delete
 
+-Set up date picker
+-Clean up console logs + code organization (all lets grouped together at top of methods)
 */
