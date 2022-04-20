@@ -5,6 +5,8 @@ import {
 } from "./content";
 import { ToDoList } from "./list";
 
+//Function that clears content of the table body and table headers. Calls the
+// function that renders everything for project view as well.
 const prepareDiv = () => {
   removeRows();
   removeHeaders();
@@ -12,6 +14,7 @@ const prepareDiv = () => {
   renderProjects();
 };
 
+//Function to render the table headers for project view
 const renderProjectHeaders = () => {
   let tableDiv = document.getElementById("task-table");
   let projectHeaders = ["Project Name", ""];
@@ -23,6 +26,9 @@ const renderProjectHeaders = () => {
     headerDiv.appendChild(th);
   }
 };
+
+//Function that calls methods to render each project row and calls functions to
+// add functionality to the buttons + links them to the correct row
 const renderProjects = () => {
   let tableBody = document.getElementById("task-table-body");
 
@@ -41,6 +47,7 @@ const renderProjects = () => {
   }
 };
 
+//Function that renders each project and the edit and delete buttons
 const renderProjectRow = (i) => {
   let tableBody = document.querySelector("#task-table-body");
   let row = document.createElement("tr");
@@ -75,6 +82,7 @@ const renderProjectRow = (i) => {
   tableBody.appendChild(row);
 };
 
+//Removes all the rows of the table body
 const removeProjectRows = () => {
   let contentDiv = document.querySelector("#task-table-body");
   while (contentDiv.firstChild) {
@@ -82,11 +90,14 @@ const removeProjectRows = () => {
   }
 };
 
+//Removes all projects and re-renders the project array. Used for updating the table
+//to match the projects array
 const refreshProjects = () => {
   removeProjectRows();
   renderProjects();
 };
 
+//Removes the project from the array and local storage and re-renders the table
 const removeProject = (e) => {
   let id = e.target.parentNode.id;
   console.log(id);
@@ -99,6 +110,9 @@ const removeProject = (e) => {
   localStorage.removeItem(key);
 };
 
+// Pulls up the edit project modal and populates the form with the project to be edited.
+// When a change is submitted, the entry is changed in the array and the project view table
+// is re-rendered.
 const editProject = (e) => {
   let modal = document.getElementById("editProjectModal");
   modal.style.display = "block";

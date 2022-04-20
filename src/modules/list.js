@@ -21,6 +21,7 @@ const ToDoList = (() => {
   };
 })();
 
+//Function to populate the arrays that hold tasks of each priority
 const setPrioArrays = () => {
   ToDoList.highPrio = ToDoList.masterList.filter(
     (tasks) => tasks.priority === "High"
@@ -33,6 +34,7 @@ const setPrioArrays = () => {
   );
 };
 
+//Function to add a new project to the projects sub-array. Also stores the project in local storage
 const addProject = () => {
   let projInput = document.getElementById("projectName").value;
   ToDoList.projects.push(projInput);

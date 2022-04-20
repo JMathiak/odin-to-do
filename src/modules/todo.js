@@ -1,6 +1,6 @@
 import { ToDoList } from "./list";
 import { refreshContent, sortContent } from "./content";
-import { logLocal, storeTask } from "./storage";
+import { storeTask } from "./storage";
 
 const ToDo = function (taskName, description, dueDate, priority, project) {
   this.taskName = taskName;
@@ -12,6 +12,10 @@ const ToDo = function (taskName, description, dueDate, priority, project) {
   this.id = Math.floor(Math.random() * 1000);
 };
 
+//Fetches the values from the add task modal and creates a new Task and adds it to
+// the list of tasks and the correct priority sub-array.
+// Calls the correct method to re-render the table based on sorting option and if
+// the user is viewing tasks or not.
 const addToDo = () => {
   let taskName = document.getElementById("taskNameInput").value;
   let taskDesc = document.getElementById("descriptionInput").value;
@@ -31,8 +35,6 @@ const addToDo = () => {
   if (newTask.priority === "High") {
     ToDoList.highPrio.push(newTask);
   }
-  console.log(ToDoList.isSorted);
-  console.log(ToDoList.viewingProjects);
   if (ToDoList.viewingProjects === false) {
     if (ToDoList.isSorted === false) {
       refreshContent();
@@ -42,9 +44,11 @@ const addToDo = () => {
   }
   let ind = ToDoList.masterList.indexOf(newTask);
   storeTask(ind, newTask);
-  logLocal();
 };
 
+//Opens the edit task modal and queries the master lists of tasks to find the correct task based on ID number.
+// Populates the form with the original data. Function also adds the onclick function for the save changes button.
+// The onclick function fetches the values from the form and updates the task with the new data.
 const editTask = (e) => {
   let modal = document.getElementById("editModal");
   modal.style.display = "block";
@@ -52,7 +56,6 @@ const editTask = (e) => {
   let id = e.target.parentNode.parentNode.getAttribute("data-key");
   let index = 0;
   for (let i = 0; i < ToDoList.masterList.length; i++) {
-    console.log("TDL ID", ToDoList.masterList[i].id);
     if (id == ToDoList.masterList[i].id) {
       index = i;
     }
