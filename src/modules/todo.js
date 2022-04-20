@@ -61,8 +61,6 @@ const editTask = (e) => {
     }
   }
 
-  console.log("id ", id);
-  console.log("index ", index);
   document.getElementById("taskNameEdit").value =
     ToDoList.masterList[index].taskName;
   document.getElementById("descriptionEdit").value =

@@ -17,10 +17,8 @@ const storeTask = (ind, input) => {
 // Populates the necessary arrays when page is loaded.
 const getStorage = () => {
   Object.keys(localStorage).forEach(function (key) {
-    console.log(localStorage.getItem(key));
     if (key.includes("task")) {
       const obj = JSON.parse(localStorage.getItem(key));
-      console.log(obj);
       let restoreTask = new ToDo(
         obj.taskName,
         obj.description,

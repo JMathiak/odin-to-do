@@ -35,7 +35,6 @@ const renderToDos = (array) => {
 
   const completeBtns = document.getElementsByClassName("comp-btn");
   for (let l = 0; l < completeBtns.length; l++) {
-    console.log(completeBtns[l].id);
     let btnId = completeBtns[l].id;
     completeBtns[l].addEventListener("click", completeTask);
   }
@@ -140,12 +139,9 @@ const removeTask = (e) => {
 
 //Function used to toggle if a task is complete
 const completeTask = (e) => {
-  console.log("Complete Task");
   let id = e.target.parentNode.parentNode.getAttribute("data-key");
-  console.log(id);
   let rowId = "[data-key=" + `"` + id + `"]`;
   let row = document.querySelector(rowId);
-  console.log(row);
   //Iterates through all tasks and adds/removes styling used to indicate a task completion
   for (let i = 0; i < ToDoList.masterList.length; i++) {
     if (ToDoList.masterList[i].id == id) {
@@ -158,7 +154,6 @@ const completeTask = (e) => {
       }
     }
   }
-  console.log(row.classList);
 };
 
 //Refreshes the table to re-render the table. Used to update the table when changes are made.
@@ -199,7 +194,6 @@ const sortContent = (sortType) => {
       let projArr = ToDoList.masterList.filter(
         (tasks) => tasks.project == ToDoList.projects[i]
       );
-      console.log(projArr);
       renderToDos(projArr.filter((tasks) => tasks.priority === "High"));
       renderToDos(projArr.filter((tasks) => tasks.priority === "Medium"));
       renderToDos(projArr.filter((tasks) => tasks.priority === "Low"));

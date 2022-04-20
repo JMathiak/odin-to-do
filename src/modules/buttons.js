@@ -36,7 +36,6 @@ const initButtons = () => {
   // Clicking outside of modals will close the modals
   window.onclick = function (event) {
     if (event.target == taskModal) {
-      console.log("close modal");
       taskModal.style.display = "none";
       document.getElementById("taskNameInput").value = "";
       document.getElementById("descriptionInput").value = "";
@@ -71,7 +70,6 @@ const initButtons = () => {
 
   //Implementation of the on change function for the sorting select box
   sortSelect.onchange = function () {
-    console.log("here");
     let sortType = sortSelect.value;
     sortContent(sortType);
   };

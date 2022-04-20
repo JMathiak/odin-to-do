@@ -100,9 +100,7 @@ const refreshProjects = () => {
 //Removes the project from the array and local storage and re-renders the table
 const removeProject = (e) => {
   let id = e.target.parentNode.id;
-  console.log(id);
   let target = ToDoList.projects[id];
-  console.log(target);
   let filteredArr = ToDoList.projects.filter((task) => task != target);
   ToDoList.projects = filteredArr;
   refreshProjects();
@@ -116,9 +114,7 @@ const removeProject = (e) => {
 const editProject = (e) => {
   let modal = document.getElementById("editProjectModal");
   modal.style.display = "block";
-  console.log(modal);
   let id = e.target.parentNode.id;
-  console.log(e.target.parentNode);
   let oldProjectName = ToDoList.projects[id];
 
   document.getElementById("editProjectName").value = oldProjectName;
