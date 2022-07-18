@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <link rel="stylesheet" href="../src/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=BIZ+UDGothic&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/ac9ecc6d61.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <script src="main.js"></script>
+    <div id="container">
+        <div class="header">
+            <div class="title">To Do List</div>
+            <div class="sort">  
+                <label for="sortType">Sort Tasks: </label>
+                <select size="1" id="sortType">
+                    <option value="default">Order Tasks Were Added</option>
+                    <option value="lowToHigh">Lowest Priority to Highest Priority</option>
+                    <option value="highToLow">Highest Priority to Lowest Priorty</option>
+                    <option value="projectSorting">Group By Project</option>
+                </select>
+            
+        </div>
+            <div class="addProject"><button id="newProject">New Project</button></div>
+            <div class="addTask"><button id="newTaskBtn">New Task</button></div>
+        </div>
+        <div class="sidebar">
+            <div class="item" id="project-view">Projects</div>
+            <div class="item" id="all-tasks">All To Do's</div>
+            <div class="item" id="complete-tasks">Completed Tasks</div>
+            <div class="item" id="incomplete-tasks">Incomplete Tasks</div>
+        </div>
+        <div class="content">
+            <table id="task-table">
+               
+                <tbody id="task-table-body"></tbody>
+            </table>
+        </div>
+        <div id="taskModal" class="modal">
+            <div class="task-modal-content">
+                <form>
+                    <div>
+                        <label for="taskNameInput">Task Name</label>
+                        <input type="text" id="taskNameInput" required>
+                    </div>
+                    <div>
+                        <label for="descriptionInput">Task Description</label>
+                        <input type="text" id="descriptionInput">
+                    </div>
+                    <div>
+                        <label for="dateInput">Task Due Date</label>
+                        <input type="date" id="dateInput" min="2022-01-01" max="2024-01-01">
+                    </div>
+                    <div>
+                        <label for="priorityInput">Task Priority</label>
+                        <select size=1 id="priorityInput">
+                            <option disabled selected value>-- Select Priority of The Task --</option>
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="projectInput">Task Project</label>
+                        <select size=1 id="projectInput">
+                            <option disabled selected value> -- Select Project of Task -- </option>
+                        </select>
+                    </div>
+                    <div><input id="submit-task-btn" type="button" value="Add Task"></div>
+                </form>
+            </div>
+        </div>
+        <div id="editModal" class="modal">
+            <div class="edit-modal-content">
+                <form>
+                    <div>
+                    <label for="taskNameEdit">Task Name</label>
+                    <input type="text" id="taskNameEdit" required>
+                </div>
+                <div>
+                    <label for="descriptionEdit">Task Description</label>
+                    <input type="text" id="descriptionEdit">
+                </div>
+                <div>
+                    <label for="dateEdit">Task Due Date</label>
+                    <input type="date" id="dateEdit" min="2022-01-01" max="2024-01-01">
+                </div>
+                <div>
+                    <label for="priorityEdit">Task Priority</label>
+                    <select size=1 id="priorityEdit">
+                        <option disabled selected value>-- Select Priority of The Task --</option>
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="projectEdit">Task Project</label>
+                    <select size=1 id="projectEdit">
+                        <option disabled selected value> -- Select Project of Task -- </option>
+                    </select>
+                </div>
+                <div>
+                    <input id="submit-edit-btn" type="button" value="Save Changes">
+                </div>
+                </form>
+            </div>
+        </div>
+        <div id="projectModal" class="modal">
+            <div class="project-modal-content">
+                <form >
+                    <div>
+                        <label for="projectName">Project Name</label>
+                        <input type="text" id="projectName" required>
+                    </div>
+                    
+                    <div class="submit-proj"><input id="submit-project-btn" type="button" value="Submit"></div>
+                </form>
+            </div>
+        </div>
+
+        <div id="editProjectModal" class="modal">
+            <div class="project-modal-content">
+                <form >
+                    <div>
+                        <label for="editProjectName">Project Name</label>
+                        <input type="text" id="editProjectName" required>
+                    </div>
+                    
+                    <div class="submit-proj"><input id="submit-project-edit-btn" type="button" value="Submit"></div>
+                </form>
+            </div>
+        </div>
+
+      
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
