@@ -14,8 +14,8 @@
 <body>
     <script src="main.js"></script>
     <div id="container">
-        <div class="header">
-            <div class="title">To Do List</div>
+        <header class="header">
+            <h1 class="title">To Do List</h1>
             <div class="sort">  
                 <label for="sortType">Sort Tasks: </label>
                 <select size="1" id="sortType">
@@ -28,20 +28,20 @@
         </div>
             <div class="addProject"><button id="newProject">New Project</button></div>
             <div class="addTask"><button id="newTaskBtn">New Task</button></div>
-        </div>
-        <div class="sidebar">
+        </header>
+        <nav class="sidebar">
             <div class="item" id="project-view">Projects</div>
             <div class="item" id="all-tasks">All To Do's</div>
             <div class="item" id="complete-tasks">Completed Tasks</div>
             <div class="item" id="incomplete-tasks">Incomplete Tasks</div>
-        </div>
-        <div class="content">
+        </nav>
+        <main class="content">
             <table id="task-table">
                
                 <tbody id="task-table-body"></tbody>
             </table>
-        </div>
-        <div id="taskModal" class="modal">
+        </main>
+        <section id="taskModal" class="modal">
             <div class="task-modal-content">
                 <form>
                     <div>
@@ -74,8 +74,8 @@
                     <div><input id="submit-task-btn" type="button" value="Add Task"></div>
                 </form>
             </div>
-        </div>
-        <div id="editModal" class="modal">
+        </section>
+        <aside id="editModal" class="modal">
             <div class="edit-modal-content">
                 <form>
                     <div>
@@ -110,8 +110,8 @@
                 </div>
                 </form>
             </div>
-        </div>
-        <div id="projectModal" class="modal">
+        </aside>
+        <aside id="projectModal" class="modal">
             <div class="project-modal-content">
                 <form >
                     <div>
@@ -122,9 +122,9 @@
                     <div class="submit-proj"><input id="submit-project-btn" type="button" value="Submit"></div>
                 </form>
             </div>
-        </div>
+        </aside>
 
-        <div id="editProjectModal" class="modal">
+        <aside id="editProjectModal" class="modal">
             <div class="project-modal-content">
                 <form >
                     <div>
@@ -135,7 +135,7 @@
                     <div class="submit-proj"><input id="submit-project-edit-btn" type="button" value="Submit"></div>
                 </form>
             </div>
-        </div>
+        </aside>
 
       
     </div>
